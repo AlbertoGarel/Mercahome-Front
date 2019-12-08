@@ -1,0 +1,25 @@
+html,
+body{
+    font-size: 14px;
+}
+* {
+    box-sizing: border-box;
+}
+:active, :hover {
+    outline: none;
+}
+p, span {
+    font-size: .875rem;
+    letter-spacing: .2px;
+}
+label {
+    display: inline-block;
+    margin-bottom: 0;
+}
+a {
+    background-color: transparent;
+    color: rgba(59, 57, 55, .25);
+    text-decoration: none;
+    font-size: .875rem;
+    letter-spacing: .2px;
+}
