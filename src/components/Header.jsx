@@ -11,6 +11,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
  * IMPORT OWN STYLES
  * */
 import '../containers/styles/Header.css';
+/**
+ * IMPORT COMPONENTS AND CONTAINERS
+ * */
+import Identificate from "../containers/Identificate";
+import Carrito from "../containers/Carrito"
 
 
 class Header extends Component {
@@ -37,7 +42,7 @@ class Header extends Component {
                                    aria-label="Search"/>
                         </form>
 
-                        <div className="menu" role="menu">
+                        <div className="menu-left" role="menu">
                             <a className="menu-item subhead1-b" data-test="categories-link"
                                href="/categories"
                             >
@@ -50,6 +55,11 @@ class Header extends Component {
                                 <label className="menu-item__label">Mis Habituales</label>
                                 <span className="menu-item__border"/>
                             </a>
+                        </div>
+
+                        <div className="menu-right">
+                            <Identificate />
+                            <Carrito />
                         </div>
 
                     </div>

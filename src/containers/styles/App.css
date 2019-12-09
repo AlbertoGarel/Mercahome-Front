@@ -23,3 +23,37 @@ a {
     font-size: .875rem;
     letter-spacing: .2px;
 }
+/*MEDIA QUERIES CONTENEDOR PRINCIPAL-----------------------------------------------*/
+
+@media (max-width: 576px){
+    .my_container{
+        padding-left: .5em;
+        padding-right: .5em;
+    }
+}
+@media (min-width: 576.1px) and (max-width: 768px){
+    .my_container{
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}
+@media (min-width: 768.1px) and (max-width: 992px){
+    .my_container{
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}
+@media (min-width: 992.1px) and (max-width: 1200px){
+    .my_container{
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+}
+@media (min-width: 1200px){
+    .my_container{
+        padding-left: 10em;
+        padding-right: 10em;
+    }
+}
+
+/* ------------- fin queries cont principal-------------------------*/

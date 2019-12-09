@@ -3,7 +3,7 @@
 }
 
 #nav_logo {
-    width: 12%;
+    width: 14%;
 }
 
 nav {
@@ -19,6 +19,11 @@ nav {
     top: 0;
     width: 100%;
     position: fixed;
+}
+@media (max-width: 991.98px){
+    nav {
+        /*height: 95px;*/
+    }
 }
 
 #input_header {
@@ -141,6 +146,13 @@ a {
     -webkit-transition: color .2s ease-in;
     transition: color .2s ease-in;
 }
+.menu-left a:hover .menu-item__label,
+.menu-left a:hover .menu-item__label{
+     color: black;
+     cursor: pointer;
+     -webkit-transition: color .2s ease-in;
+     transition: color .2s ease-in;
+ }
 
 .menu-item.subhead1-b {
     font-family: Muli;
@@ -160,7 +172,6 @@ a {
     height: 30px;
     margin-top: 8px;
 }
-
 
 /*SPAN*/
 .menu-item.active .menu-item__border, .menu-item:hover .menu-item__border {
@@ -188,3 +199,9 @@ a {
     font-weight: 700;
 }
 
+/*MENU-RIGHT*/
+.menu-right{
+    position: absolute;
+    right: 10px;
+    display: flex;
+}

@@ -3,6 +3,8 @@ import React from 'react';
  *  IMPORT COMPONENTS
  * */
 import Header from '../src/components/Header';
+import Footer from '../src/components/Footer';
+import Slider from '../src/components/Slider';
 /**
  * IMPORT BOOTSTRAP
  * */
@@ -19,11 +21,15 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './containers/styles/App.css';
 
 function App() {
-  return (
-  <main>
-    <Header />
-  </main>
-  );
+    return (
+        <main>
+            <Header/>
+            <main className="my_container">
+                <Slider/>
+            </main>
+            <Footer/>
+        </main>
+    );
 }
 
 export default App;
