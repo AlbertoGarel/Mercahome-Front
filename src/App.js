@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 /**
  *  IMPORT COMPONENTS
  * */
@@ -22,13 +22,15 @@ import './containers/styles/App.css';
 
 function App() {
     return (
-        <main>
+        <Fragment>
             <Header/>
-            <main className="my_container">
+            <main className="my_container compens_nav">
+                <section className="cont-principal">
                 <Slider/>
+                </section>
             </main>
             <Footer/>
-        </main>
+        </Fragment>
     );
 }
 

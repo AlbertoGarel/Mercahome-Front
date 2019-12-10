@@ -44,7 +44,7 @@ class Header extends Component {
 
                         <div className="menu-left" role="menu">
                             <a className="menu-item subhead1-b" data-test="categories-link"
-                               href="/categories"
+                               href="/categorias"
                             >
                                 <label className="menu-item__label">Categorías</label>
                                 <span className="menu-item__border"/>

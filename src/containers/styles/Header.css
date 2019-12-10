@@ -18,7 +18,8 @@ nav {
     border-bottom: .5px solid #e6e6e6;
     top: 0;
     width: 100%;
-    position: fixed;
+    position: fixed!important;
+    z-index: 999;
 }
 @media (max-width: 991.98px){
     nav {
