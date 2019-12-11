@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import {Link} from "react-router-dom";
 /**
  * IMPORT BOOTSTRAP
  * */
@@ -22,10 +23,13 @@ class Header extends Component {
     render() {
         return (
             <Fragment>
-                <nav className="navbar navbar-expand-lg navbar-light">
-                    <img src="./assets/images/merca_dev.png" alt="logo mercahome"
-                         id="nav_logo"
+                <nav className="navbar navbar-expand-lg navbar-light flex-shrink-1">
+                    <Link to="/" id="enlace-logo"><img
+                        src="./assets/images/merca_dev.png"
+                        alt="logo mercahome"
+                        id="nav_logo"
                     />
+                    </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -43,12 +47,12 @@ class Header extends Component {
                         </form>
 
                         <div className="menu-left" role="menu">
-                            <a className="menu-item subhead1-b" data-test="categories-link"
-                               href="/categorias"
+                            <Link to="/categorias" className="menu-item subhead1-b" data-test="categories-link"
+                                // href="/categorias"
                             >
                                 <label className="menu-item__label">Categorías</label>
                                 <span className="menu-item__border"/>
-                            </a>
+                            </Link>
                             <a className="menu-item subhead1-b" data-test="my-products-link"
                                href="/my-products"
                             >
@@ -58,8 +62,8 @@ class Header extends Component {
                         </div>
 
                         <div className="menu-right">
-                            <Identificate />
-                            <Carrito />
+                            <Identificate/>
+                            <Carrito/>
                         </div>
 
                     </div>

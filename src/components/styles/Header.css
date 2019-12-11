@@ -3,7 +3,8 @@
 }
 
 #nav_logo {
-    width: 14%;
+    width: 100%;
+    /*width: 14%;*/
 }
 
 nav {
@@ -18,10 +19,11 @@ nav {
     border-bottom: .5px solid #e6e6e6;
     top: 0;
     width: 100%;
-    position: fixed!important;
+    position: fixed !important;
     z-index: 999;
 }
-@media (max-width: 991.98px){
+
+@media (max-width: 991.98px) {
     nav {
         /*height: 95px;*/
     }
@@ -135,6 +137,17 @@ a {
     margin-top: 8px;
 }
 
+#enlace-logo {
+    flex-basis: calc(100% - 87%);
+    /*min-width: calc(100% - 75%);*/
+}
+
+@media (max-width: 991.98px) {
+    #enlace-logo {
+        flex-basis: calc(100% - 60%);
+    }
+}
+
 /*HiperEnlaces*/
 
 .menu-item.active .menu-item__label, .menu-item .menu-item__label {
@@ -147,13 +160,14 @@ a {
     -webkit-transition: color .2s ease-in;
     transition: color .2s ease-in;
 }
+
 .menu-left a:hover .menu-item__label,
-.menu-left a:hover .menu-item__label{
-     color: black;
-     cursor: pointer;
-     -webkit-transition: color .2s ease-in;
-     transition: color .2s ease-in;
- }
+.menu-left a:hover .menu-item__label {
+    color: black;
+    cursor: pointer;
+    -webkit-transition: color .2s ease-in;
+    transition: color .2s ease-in;
+}
 
 .menu-item.subhead1-b {
     font-family: Muli;
@@ -201,7 +215,7 @@ a {
 }
 
 /*MENU-RIGHT*/
-.menu-right{
+.menu-right {
     position: absolute;
     right: 10px;
     display: flex;
