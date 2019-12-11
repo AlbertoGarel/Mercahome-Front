@@ -10,11 +10,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 /**
  * IMPORT OWN STYLES
  * */
-import '../containers/styles/Header.css';
-/**
- * IMPORT COMPONENTS AND CONTAINERS
- * */
-import '../containers/styles/Footer.css';
+import './styles/Footer.css';
 
 class Footer extends Component {
     render() {

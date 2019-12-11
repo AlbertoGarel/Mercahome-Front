@@ -10,7 +10,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 /**
  * IMPORT OWN STYLES
  * */
-import '../containers/styles/Slider.css';
+import './styles/Slider.css';
 
 
 class Slider extends Component {

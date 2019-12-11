@@ -2,9 +2,9 @@ import React, {Fragment} from 'react';
 /**
  *  IMPORT COMPONENTS
  * */
-import Header from '../src/components/Header';
-import Footer from '../src/components/Footer';
-import Slider from '../src/components/Slider';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Slider from '../components/Slider';
 /**
  * IMPORT BOOTSTRAP
  * */
@@ -18,7 +18,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 /**
  *  IMPORT STYLES
  * */
-import './containers/styles/App.css';
+import './styles/App.css';
 
 function App() {
     return (

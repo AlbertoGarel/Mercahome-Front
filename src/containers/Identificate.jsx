@@ -14,12 +14,12 @@ import '../containers/styles/Identificate.css';
 
 class Identificate extends Component {
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="dropdown open">
                 <label className="dropdown-toggle menu-item__label"
-                         id="dropdownMenu5" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
+                       id="dropdownMenu5" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
                     Identificate
                 </label>
                 <i className="fa fa-2x fa-chevron-down"/>
@@ -33,7 +33,7 @@ class Identificate extends Component {
                         <i className="fa fa-lg fa-question info"/>
                         <span>Preguntas frecuentes</span></a>
                     <a className="dropdown-item info" href="#!">
-                        <i className="fa fa-2x fa-commenting"></i>
+                        <i className="fa fa-2x fa-commenting"/>
                         <span>Ayuda</span></a>
                 </div>
             </div>

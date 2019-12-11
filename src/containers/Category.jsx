@@ -11,11 +11,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 /**
  * IMPORT OWN STYLES
  * */
-import '../containers/styles/Header.css';
+import '../containers/styles/Category.css'
 /**
  * IMPORT COMPONENTS AND CONTAINERS
  * */
-import '../containers/styles/Category.css'
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 

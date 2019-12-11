@@ -10,7 +10,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 /**
  * IMPORT OWN STYLES
  * */
-import '../containers/styles/Header.css';
+import './styles/Header.css';
 /**
  * IMPORT COMPONENTS AND CONTAINERS
  * */
