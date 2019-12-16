@@ -47,7 +47,7 @@ h1 {
     line-height: 22px;
 }
 
-#lugar_entrega {
+.lugar_entrega {
     color: #00ab61;
     font-weight: 400;
     font-size: 14px;

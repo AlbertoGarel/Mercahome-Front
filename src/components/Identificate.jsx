@@ -11,7 +11,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 /**
  * IMPORT OWN STYLES
  * */
-import '../containers/styles/Identificate.css';
+import './styles/Identificate.css';
 
 class Identificate extends Component {
 
@@ -26,7 +26,7 @@ class Identificate extends Component {
                 <i className="fa fa-2x fa-chevron-down"/>
                 <div className="dropdown-menu">
                     <h1 className="dropdown-item">Invitado</h1>
-                    <a id="lugar_entrega" className="dropdown-item" href="#!">Entregar en...</a>
+                    <p className="lugar_entrega dropdown-item">Entregar en...</p>
                     <div className="dropdown-divider"/>
                     <a id="identificate_btn" type="button" className="btn btn-lg btn-block">Identificate</a>
                     <div className="dropdown-divider"/>

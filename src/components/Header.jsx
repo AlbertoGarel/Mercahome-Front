@@ -15,8 +15,8 @@ import './styles/Header.css';
 /**
  * IMPORT COMPONENTS AND CONTAINERS
  * */
-import Identificate from "../containers/Identificate";
-import Carrito from "../containers/Carrito"
+import Identificate from "../components/Identificate";
+import Carrito from "../components/Carrito"
 
 
 class Header extends Component {
