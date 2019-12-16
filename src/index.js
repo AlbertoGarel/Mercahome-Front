@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import store from './store';
 /**
  *  IMPORT FONTAWESOME
  * */
@@ -12,6 +14,7 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import Category from "./containers/Category";
 
 ReactDOM.render(
+    <Provider store={store}>
     <BrowserRouter>
         <Switch>
             <Route path="/" exact component={App}/>
@@ -19,5 +22,6 @@ ReactDOM.render(
             {/*<Route path="/sobre-nosotros" component={Sobrenosotros}/>*/}
         </Switch>
     </BrowserRouter>
-    , document.getElementById('root'));
+        </Provider>
+        , document.getElementById('root'));
 

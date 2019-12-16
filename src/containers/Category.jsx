@@ -22,21 +22,21 @@ class Category extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            url: 'http://localhost:3000/categories',
-            categories: [],
+            // url: 'http://localhost:3000/categories',
+            // categories: [],
         }
         //functions BIND
     }
 
-    componentDidMount() {
-        axios.get(this.state.url)
-            .then(connect => {
-                this.setState({categories: connect.data});
-                console.table(connect.data);
-                console.log('----', this.state.categories)
-            })
-            .catch(error => console.log(error))
-    }
+    // componentDidMount() {
+    //     axios.get(this.state.url)
+    //         .then(connect => {
+    //             this.setState({categories: connect.data});
+    //             console.table(connect.data);
+    //             console.log('----', this.state.categories)
+    //         })
+    //         .catch(error => console.log(error))
+    // }
 
     render() {
         return (
