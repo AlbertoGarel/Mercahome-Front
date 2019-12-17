@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import axios from 'axios';
+import {connect} from 'react-redux'
 /**
  * IMPORT BOOTSTRAP
  * */
@@ -17,26 +17,36 @@ import '../containers/styles/Category.css'
  * */
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+/**
+ * IMPORT REDUCERS
+ * */
+import {showCategories} from "../actions";
 
 class Category extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // url: 'http://localhost:3000/categories',
-            // categories: [],
-        }
-        //functions BIND
+
+    componentWillMount() {
+        this.props.showCategories();
     }
 
-    // componentDidMount() {
-    //     axios.get(this.state.url)
-    //         .then(connect => {
-    //             this.setState({categories: connect.data});
-    //             console.table(connect.data);
-    //             console.log('----', this.state.categories)
-    //         })
-    //         .catch(error => console.log(error))
-    // }
+    renderCategoriesList() {
+        if (this.props.categories.length === 0) {
+            return (
+                    <div className="cover">
+                        <img className="w-50" src="./assets/images/no_products.png" alt="no products"/>
+                        <p className="p_error">No hay categorías</p>
+                    </div>
+            );
+        }
+        return this.props.categories.map((category) => {
+            return (
+                <Fragment key={category.id}>
+                    <li id={category.category} key={category.id}><i
+                        className="fa fa-2x fa-chevron-right"/>{category.category}</li>
+                    <hr/>
+                </Fragment>
+            )
+        })
+    }
 
     render() {
         return (
@@ -45,11 +55,12 @@ class Category extends Component {
                 <main className="container-fluid no-padd compens_nav">
                     <section className="cont-principal">
                         <ul id="categorias">
-                            {this.state.categories.map(category => <Fragment>
-                                <li id={category.category} key={category.id}><i
-                                    className="fa fa-2x fa-chevron-right"/>{category.category}</li>
-                                <hr/>
-                            </Fragment>)}
+                            {/*{this.state.categories.map(category => <Fragment>*/}
+                            {/*    <li id={category.category} key={category.id}><i*/}
+                            {/*        className="fa fa-2x fa-chevron-right"/>{category.category}</li>*/}
+                            {/*    <hr/>*/}
+                            {/*</Fragment>)}*/}
+                            {this.renderCategoriesList()}
                         </ul>
 
                         <div className="contenido ">
@@ -57,88 +68,7 @@ class Category extends Component {
                             <p> One of three columns</p>
                             <p> One of three columns</p>
                             <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
+
                             <Footer/>
                         </div>
                     </section>
@@ -147,28 +77,13 @@ class Category extends Component {
             </Fragment>
         )
     }
-
-    // render() {
-    //     return (
-    //         <Fragment>
-    //             <Header/>
-    //             <main className="container-fluid">
-    //                     <div className="row">
-    //                         <div className="col-sm-12 col-lg-2 left">
-    //                             <ul id="categorias">
-    //                                 {this.state.categories.map(category => <Fragment><li id={category.category} key={category.id}><i className="fa fa-2x fa-chevron-right"/>{category.category}</li><hr/></Fragment>)}
-    //                             </ul>
-    //                         </div>
-    //                         <div className="col-sm-12 col-lg-10 bg-success">
-    //                             One of three columns
-    //                             <Footer/>
-    //                         </div>
-    //                     </div>
-    //             </main>
-    //
-    //         </Fragment>
-    //     )
-    // }
 }
 
-export default Category;
+function mapStateToProps(state) {
+    return {
+        categories: state.Categories.list
+    }
+};
+
+
+export default connect(mapStateToProps, {showCategories})(Category);
