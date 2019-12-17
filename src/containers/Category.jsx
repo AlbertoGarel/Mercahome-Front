@@ -15,8 +15,7 @@ import '../containers/styles/Category.css'
 /**
  * IMPORT COMPONENTS AND CONTAINERS
  * */
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Wrapper from "../components/Wrapper";
 /**
  * IMPORT REDUCERS
  * */
@@ -31,10 +30,10 @@ class Category extends Component {
     renderCategoriesList() {
         if (this.props.categories.length === 0) {
             return (
-                    <div className="cover">
-                        <img className="w-50" src="./assets/images/no_products.png" alt="no products"/>
-                        <p className="p_error">No hay categorías</p>
-                    </div>
+                <div className="cover">
+                    <img className="w-50" src="./assets/images/no_products.png" alt="no products"/>
+                    <p className="p_error">No hay categorías</p>
+                </div>
             );
         }
         return this.props.categories.map((category) => {
@@ -51,29 +50,26 @@ class Category extends Component {
     render() {
         return (
             <Fragment>
-                <Header/>
-                <main className="container-fluid no-padd compens_nav">
-                    <section className="cont-principal">
-                        <ul id="categorias">
-                            {/*{this.state.categories.map(category => <Fragment>*/}
-                            {/*    <li id={category.category} key={category.id}><i*/}
-                            {/*        className="fa fa-2x fa-chevron-right"/>{category.category}</li>*/}
-                            {/*    <hr/>*/}
-                            {/*</Fragment>)}*/}
-                            {this.renderCategoriesList()}
-                        </ul>
+                <Wrapper>
+                    <main className="container-fluid no-padd compens_nav">
+                        <section className="cont-principal">
+                            <ul id="categorias">
 
-                        <div className="contenido ">
+                                {this.renderCategoriesList()}
 
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
-                            <p> One of three columns</p>
+                            </ul>
 
-                            <Footer/>
-                        </div>
-                    </section>
-                </main>
+                            <div className="contenido ">
 
+                                <p> One of three columns</p>
+                                <p> One of three columns</p>
+                                <p> One of three columns</p>
+
+
+                            </div>
+                        </section>
+                    </main>
+                </Wrapper>
             </Fragment>
         )
     }

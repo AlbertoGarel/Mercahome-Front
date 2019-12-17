@@ -2,9 +2,9 @@ import React, {Component, Fragment} from 'react';
 /**
  *  IMPORT COMPONENTS
  * */
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Wrapper from '../components/Wrapper';
 import Slider from '../components/Slider';
+import Showproducts from "../components/ShowProducts";
 /**
  * IMPORT BOOTSTRAP
  * */
@@ -30,13 +30,14 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <Header/>
-                <main className="my_container compens_nav">
-                    <section className="cont-principal">
-                        <Slider/>
-                    </section>
-                </main>
-                <Footer/>
+                <Wrapper>
+                    <main className="my_container compens_nav">
+                        <section className="cont-principal">
+                            <Slider/>
+                            <Showproducts/>
+                        </section>
+                    </main>
+                </Wrapper>
             </Fragment>
         );
     }
