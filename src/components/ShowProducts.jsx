@@ -24,10 +24,10 @@ class Showproducts extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <section className="d-flex justify-content-start">
-                    {/*<div className="prueba">ede</div>*/}
-                    {/*<div className="prueba">ede</div>*/}
+                <section className="d-flex justify-content-start flex-wrap">
+
                     {this.renderTopProducts()}
+
                 </section>
             </div>
         )

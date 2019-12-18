@@ -19,12 +19,24 @@ import Wrapper from "../components/Wrapper";
 /**
  * IMPORT REDUCERS
  * */
-import {showCategories} from "../actions";
+import {
+    showCategories,
+    showPoolCat
+} from "../actions";
+import CardProduct from "../components/CardProduct";
 
 class Category extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            cat: "Agua",
+        }
+
+    }
 
     componentWillMount() {
         this.props.showCategories();
+        this.props.showPoolCat(this.state.cat);
     }
 
     renderCategoriesList() {
@@ -39,13 +51,29 @@ class Category extends Component {
         return this.props.categories.map((category) => {
             return (
                 <Fragment key={category.id}>
-                    <li id={category.category} key={category.id}><i
-                        className="fa fa-2x fa-chevron-right"/>{category.category}</li>
+                    <li id={category.category} key={category.id} onClick={() => this.handleCategory(category.category)}>
+                        <i
+                            className="fa fa-2x fa-chevron-right"/>{category.category}</li>
                     <hr/>
                 </Fragment>
             )
         })
     }
+
+    renderPoolCategories() {
+        return this.props.poolCat.map((product) => {
+            return (
+                <Fragment key={product.id}>
+                    <CardProduct data={product}/>
+                </Fragment>
+            )
+        })
+    }
+
+    handleCategory = (category) => {
+        this.setState({cat: category});
+        this.props.showPoolCat(category);
+    };
 
     render() {
         return (
@@ -59,12 +87,13 @@ class Category extends Component {
 
                             </ul>
 
-                            <div className="contenido ">
+                            <div className="contenido">
+                                <div className="titulo mx-auto mb-2 ">
+                                    <h2>{this.state.cat}</h2>
+                                    <hr/>
+                                </div>
 
-                                <p> One of three columns</p>
-                                <p> One of three columns</p>
-                                <p> One of three columns</p>
-
+                                {this.renderPoolCategories()}
 
                             </div>
                         </section>
@@ -77,9 +106,13 @@ class Category extends Component {
 
 function mapStateToProps(state) {
     return {
-        categories: state.Categories.list
+        categories: state.Categories.list,
+        poolCat: state.PoolCat.list
     }
 };
 
 
-export default connect(mapStateToProps, {showCategories})(Category);
+export default connect(mapStateToProps, {
+    showCategories,
+    showPoolCat
+})(Category);

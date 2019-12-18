@@ -3,13 +3,15 @@ import {combineReducers} from 'redux';
 import Categories from './categories'
 import TopProducts from './TopProducts'
 import Slider from './slider'
+import PoolCat from './poolCat'
 
 
 let reducers = combineReducers({
     //reducers...
     Categories,
     TopProducts,
-    Slider
+    Slider,
+    PoolCat
 });
 
 export default reducers;

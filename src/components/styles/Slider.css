@@ -1,5 +1,6 @@
 .carousel-inner{
-    background-image: url("https://storage.googleapis.com/mercadona_online_prod_static/NavMdona1.jpg"), linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0));
+    background-image: url("https://storage.googleapis.com/mercadona_online_prod_static/NavMdona3.jpg"), linear-gradient(5deg, rgba(0, 0, 0,1), rgba(255, 255, 255, .4));
+    /*background-image: url("https://storage.googleapis.com/mercadona_online_prod_static/LpCNavidad.jpg"), linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0));*/
     background-repeat: no-repeat;
     background-position: right;
     background-size: 100% 100%;
@@ -40,3 +41,32 @@ hr{
     padding-bottom: 2em;
     color: rgba(59,57,53,.7);
 }
+.carousel-caption.d-md-block>h4,
+.carousel-caption.d-md-block>p{
+    font-size: 1.5em!important;
+    text-shadow: 1px 1px black;
+}
+
+@media (max-width: 768px){
+    .carousel-caption.d-md-block>h4,
+    .carousel-caption.d-md-block>p{
+        font-size: 3.2vw!important;
+        text-shadow: 1px 1px black;
+    }
+    .carousel-caption {
+        position: absolute;
+        z-index: 10;
+        padding-bottom: 20px;
+        color: #fff;
+        text-align: center;
+        left: 65%;
+        top: calc(100% - 4em);
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+}
+

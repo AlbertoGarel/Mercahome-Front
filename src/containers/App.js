@@ -23,7 +23,9 @@ import './styles/App.css';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            title: "promoción"
+        }
     }
 
 
@@ -34,6 +36,11 @@ class App extends Component {
                     <main className="my_container compens_nav">
                         <section className="cont-principal">
                             <Slider/>
+                            <div className="titulo mx-auto mb-2 ">
+                                <h2>{this.state.title}</h2>
+                                <p style={{textIndent:'1.5em'}}>Productos en promoción hasta fin de existencias</p>
+                                <hr/>
+                            </div>
                             <Showproducts/>
                         </section>
                     </main>

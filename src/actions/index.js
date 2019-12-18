@@ -3,6 +3,7 @@ import axios from 'axios';
 export const SHOW_CATEGORIES = 'SHOW_CATEGORIES';
 export const SHOW_TOPPRODUCTS = 'SHOW_TOPPRODUCTS';
 export const SHOW_SLIDERPRODUCTS = 'SHOW_SLIDERPRODUCTS';
+export const SHOW_POOLCAT = 'SHOW_POOLCAT';
 
 export function showCategories() {
     return (dispatch, getState) => {
@@ -12,6 +13,7 @@ export function showCategories() {
             })
     }
 }
+
 export function showTopProducts() {
     return (dispatch, getState) => {
         axios.get('http://localhost:3000/products/top')
@@ -25,8 +27,18 @@ export function showSliderProducts() {
     return (dispatch, getState) => {
         axios.get('http://localhost:3000/products/promo')
             .then(res => {
-                console.log(res.data);
                 dispatch({type: SHOW_SLIDERPRODUCTS, payload: res.data});
+            })
+    }
+}
+
+export function showPoolCat(cat) {
+    console.log('categoria',cat);
+    return (dispatch, getState) => {
+        axios.get(`http://localhost:3000/products/?category=${cat}`)
+            .then(res => {
+                // console.log('',res.data);
+                dispatch({type: SHOW_POOLCAT, payload: res.data});
             })
     }
 }

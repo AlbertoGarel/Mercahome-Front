@@ -62,8 +62,8 @@ class Slider extends Component {
                              src={product.image}
                         />
                         <span className="product-cell__image-overlay"></span>
-                        <div className="carousel-caption d-none d-md-block">
-                            <h4>{`${product.price} € ${product.volume}`}</h4>
+                        <div className="carousel-caption d-md-block">
+                            <h4>{product.price} €<span>{product.volume}</span> </h4>
                             <p>{product.name}</p>
                         </div>
                     </div>
@@ -100,7 +100,7 @@ class Slider extends Component {
                         </a>
                     </div>
                 </div>
-                <hr/>
+                {/*<hr/>*/}
             </div>
         )
     }
