@@ -2,12 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
-// import store from './store';
-
+import store from './store'
 //imports for redux
-import {createStore, applyMiddleware} from 'redux';
-import reducers from './reducers'
-import thunk from 'redux-thunk'
 /**
  *  IMPORT FONTAWESOME
  * */
@@ -18,10 +14,9 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import App from './containers/App';
 import Category from "./containers/Category";
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-
+// const store = createStore(reducers, composeEnhancers());
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)}>
+    <Provider store={store}>
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={App}/>

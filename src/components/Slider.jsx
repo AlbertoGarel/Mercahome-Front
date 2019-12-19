@@ -18,11 +18,11 @@ import './styles/Slider.css';
 class Slider extends Component {
 
     componentWillMount() {
-        this.props.showSliderProducts();
+       showSliderProducts();
     }
 
     renderSliderList() {
-        if (this.props.sliderProducts.length === 0) {
+        if (this.props.sliderProducts?.length === 0) {
             return (
                 <Fragment>
                     <div className="carousel-item active">
@@ -53,7 +53,7 @@ class Slider extends Component {
             )
         } else {
             let clase = 'carousel-item ';
-            return this.props.sliderProducts.map((product, index) => {
+            return this.props.sliderProducts?.map((product, index) => {
                 return (
                     <div className={index === 0 ? clase.concat('active') : clase} key={product.id}>
                         <img className="d-block w-25"
@@ -112,4 +112,4 @@ function mapStateToProps(state) {
     }
 };
 
-export default connect(mapStateToProps, {showSliderProducts})(Slider);
+export default connect(mapStateToProps)(Slider);

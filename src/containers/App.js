@@ -19,6 +19,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
  *  IMPORT STYLES
  * */
 import './styles/App.css';
+import SortBtn from "../components/SortBtn";
 
 class App extends Component {
     constructor(props) {
@@ -36,11 +37,15 @@ class App extends Component {
                     <main className="my_container compens_nav">
                         <section className="cont-principal">
                             <Slider/>
-                            <div className="titulo mx-auto mb-2 ">
-                                <h2>{this.state.title}</h2>
-                                <p style={{textIndent:'1.5em'}}>Productos en promoción hasta fin de existencias</p>
-                                <hr/>
+                            <div className="titulo mx-auto mb-2 d-flex justify-content-between">
+                                <div id="left" className="w-75" >
+                                    <h2>{this.state.title}</h2>
+                                    <p >Productos en promoción hasta fin de existencias</p>
+                                </div>
+                                    <div id="right" className="d-flex justify-content-end align-items-center w-25">  {/*<SortBtn/>*/}
+                                    </div>
                             </div>
+                            <hr className="display-block"/>
                             <Showproducts/>
                         </section>
                     </main>

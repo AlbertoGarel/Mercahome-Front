@@ -8,7 +8,7 @@ import CardProduct from "./CardProduct";
 class Showproducts extends Component {
 
     componentWillMount() {
-        this.props.showTopProducts();
+        showTopProducts();
     }
 
     renderTopProducts() {
@@ -40,4 +40,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {showTopProducts})(Showproducts);
+export default connect(mapStateToProps)(Showproducts);

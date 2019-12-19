@@ -28,12 +28,12 @@ class Identificate extends Component {
                     <h1 className="dropdown-item">Invitado</h1>
                     <p className="lugar_entrega dropdown-item">Entregar en...</p>
                     <div className="dropdown-divider"/>
-                    <a id="identificate_btn" type="button" className="btn btn-lg btn-block">Identificate</a>
+                    <a id="identificate_btn" type="button" className="btn btn-lg btn-block" href="/">Identificate</a>
                     <div className="dropdown-divider"/>
-                    <a className="dropdown-item info" href="#!">
+                    <a className="dropdown-item info" href="/">
                         <i className="fa fa-lg fa-question info"/>
                         <span>Preguntas frecuentes</span></a>
-                    <a className="dropdown-item info" href="#!">
+                    <a className="dropdown-item info" href="/">
                         <i className="fa fa-2x fa-commenting"/>
                         <span>Ayuda</span></a>
                 </div>

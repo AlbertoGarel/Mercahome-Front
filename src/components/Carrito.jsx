@@ -10,7 +10,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 /**
  * IMPORT OWN STYLES
  * */
-import './styles/Carrito.css'
+import './styles/Carrito.css';
 
 class Carrito extends Component {
     constructor(props) {

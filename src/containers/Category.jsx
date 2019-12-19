@@ -21,22 +21,35 @@ import Wrapper from "../components/Wrapper";
  * */
 import {
     showCategories,
-    showPoolCat
+    showPoolCat,
+    sortByPrice
 } from "../actions";
 import CardProduct from "../components/CardProduct";
+import SortBtn from "../components/SortBtn";
 
 class Category extends Component {
     constructor(props) {
         super(props);
         this.state = {
             cat: "Agua",
-        }
-
+            btn: false,
+        };
+//bind function
+        this.outputEvent = this.outputEvent.bind(this);
     }
 
-    componentWillMount() {
-        this.props.showCategories();
-        this.props.showPoolCat(this.state.cat);
+    outputEvent() {
+        if (this.state.btn === false) {
+            this.setState({btn: true});
+        } else {
+            this.setState({btn: false});
+        }
+            sortByPrice(this.state.btn);
+    }
+
+    componentDidMount() {
+        showCategories();
+        showPoolCat(this.state.cat);
     }
 
     renderCategoriesList() {
@@ -72,7 +85,7 @@ class Category extends Component {
 
     handleCategory = (category) => {
         this.setState({cat: category});
-        this.props.showPoolCat(category);
+        showPoolCat(category);
     };
 
     render() {
@@ -90,6 +103,7 @@ class Category extends Component {
                             <div className="contenido">
                                 <div className="titulo mx-auto mb-2 ">
                                     <h2>{this.state.cat}</h2>
+                                    <SortBtn clickHandler={this.outputEvent} data={this.state.btn}/>
                                     <hr/>
                                 </div>
 
@@ -104,15 +118,12 @@ class Category extends Component {
     }
 }
 
+
 function mapStateToProps(state) {
     return {
         categories: state.Categories.list,
-        poolCat: state.PoolCat.list
+        poolCat: state.PoolCat.list,
     }
 };
 
-
-export default connect(mapStateToProps, {
-    showCategories,
-    showPoolCat
-})(Category);
+export default connect(mapStateToProps)(Category);
