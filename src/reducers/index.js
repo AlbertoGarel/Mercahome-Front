@@ -4,6 +4,7 @@ import Categories from './categories'
 import TopProducts from './TopProducts'
 import Slider from './slider'
 import PoolCat from './poolCat'
+import Search from "./SearchPoduct";
 
 
 let reducers = combineReducers({
@@ -11,7 +12,8 @@ let reducers = combineReducers({
     Categories,
     TopProducts,
     Slider,
-    PoolCat
+    PoolCat,
+    Search,
 });
 
 export default reducers;

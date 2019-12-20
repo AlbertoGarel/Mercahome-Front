@@ -12,7 +12,6 @@ class Wrapper extends Component {
     render() {
         return (
             <Fragment>
-                <Header/>
 
                 {this.props.children}
 

@@ -12,6 +12,7 @@ ReactDOM.render(
         <Switch>
             <Route path="/" exact component={App}/>
             <Route path="/categorias" component={Category}/>
+            <Route path="/categorias" component={Category}/>
             {/*<Route path="/sobre-nosotros" component={Sobrenosotros}/>*/}
         </Switch>
     </BrowserRouter>

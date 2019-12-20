@@ -12,13 +12,24 @@ class Showproducts extends Component {
     }
 
     renderTopProducts() {
-        return this.props.topProducts.map((product) => {
-            return (
-                <Fragment key={product.Product.id}>
-                    <CardProduct data={product.Product}/>
-                </Fragment>
-            )
-        })
+        if(!this.props.busqueda.length){
+            return this.props.topProducts.map((product) => {
+                return (
+                    <Fragment key={product.Product.id}>
+                        <CardProduct data={product.Product}/>
+                    </Fragment>
+                )
+            })
+        }else{
+            return this.props.busqueda.map((product) => {
+                return (
+                    <Fragment key={product.id}>
+                        <CardProduct data={product}/>
+                    </Fragment>
+                )
+            })
+        }
+
     }
 
     render() {
@@ -36,7 +47,9 @@ class Showproducts extends Component {
 
 function mapStateToProps(state) {
     return {
-        topProducts: state.TopProducts.list
+        topProducts: state.TopProducts.list,
+        busqueda: state.Search.list,
+        desc: state.Search.desc
     }
 }
 

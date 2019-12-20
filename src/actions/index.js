@@ -6,6 +6,8 @@ export const SHOW_TOPPRODUCTS = 'SHOW_TOPPRODUCTS';
 export const SHOW_SLIDERPRODUCTS = 'SHOW_SLIDERPRODUCTS';
 export const SHOW_POOLCAT = 'SHOW_POOLCAT';
 export const SORT_BYPRICE = 'SORT_BYPRICE';
+export const SEARCH = 'SEARCH';
+export const DELETE = 'DELETE';
 
 
 export function showCategories() {
@@ -35,5 +37,14 @@ export function showPoolCat(cat) {
 
 export function sortByPrice(btnBol){
         store.dispatch({type: SORT_BYPRICE, payload: btnBol})
+};
+
+export async function search(desc){
+    const res = await axios.get(`http://localhost:3000/products/?name=${desc}`);
+    store.dispatch({type: SEARCH, payload: {list: res.data, desc: desc}})
+};
+
+export async function searchDelete(desc){
+    store.dispatch({type: DELETE, payload: 'search'})
 };
 

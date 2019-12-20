@@ -22,7 +22,7 @@ class SortBtn extends Component {
     render() {
         return (
             <Fragment>
-                <div className="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                <div className={`btn-group btn-group-toggle float-right ${this.props.tipo}`} data-toggle="buttons">
                     <i className="fa fa-2x fa-eur"/>
                     <button type="btn" name="options" id="option1" autoComplete="off"
                             onClick={this.props.clickHandler}>
