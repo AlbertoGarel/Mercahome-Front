@@ -45,6 +45,11 @@ export async function search(desc){
 };
 
 export async function searchDelete(desc){
-    store.dispatch({type: DELETE, payload: 'search'})
+    store.dispatch({type: DELETE, payload: true})
 };
+
+// export async function userregister(params){
+//     axios.get()
+//         .then(res => store.dispatch({type:})
+// }
 

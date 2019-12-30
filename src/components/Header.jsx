@@ -17,6 +17,7 @@ import './styles/Header.css';
  * */
 import Identificate from "../components/Identificate";
 import Carrito from "../components/Carrito"
+import Modal from "./Modal"
 /**
  * IMPORT ACTIONS
  * */
@@ -27,10 +28,23 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            search:''
+            search:'',
+            isShowing: false
         };
         this.textInput = React.createRef()
     }
+    triggerOpenModalHandler = () => {
+        this.setState({
+            isShowing: true
+        });
+    };
+
+    closeModalHandler = () => {
+        this.setState({
+            isShowing: false
+        });
+    };
+
 
     componentDidMount() {
         this.textInput.current.value = this.props.desc
@@ -42,8 +56,13 @@ class Header extends Component {
         }
     };
 
+    handleBlur = (ev) => {
+        ev.target.value = '';
+    };
+
 
     render() {
+
         return (
             <Fragment>
                 <nav className="navbar navbar-expand-lg navbar-light flex-shrink-1">
@@ -71,10 +90,11 @@ class Header extends Component {
                                    onChange={ev=>this.setState({search:ev.target.value})}
                                    onKeyUp={(ev) => this.handleSearch(ev)}
                                    ref={this.textInput}
-                                   value={this.props.vaciar ? '' : this.state.search}
+                                   value={this.props.desc === true ? '' : this.state.search}
+                                   onBlur={(ev) => this.handleBlur(ev)}
 
                             />
-                            {this.state.desc} == {this.state.search}
+                            {/*{this.state.desc} == {this.state.search}*/}
                         </div>
                         <div className="menu-left" role="menu">
                             <Link to="/categorias" className="menu-item subhead1-b" data-test="categories-link"
@@ -89,10 +109,21 @@ class Header extends Component {
                                 <span className="menu-item__border"/>
                             </Link>
                         </div>
+                        {/*{ this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }*/}
 
+                        {/*<button className="open-modal-btn" onClick={this.openModalHandler}>Open Modal</button>*/}
+
+                        <Modal
+                            className="modal"
+                            show={this.state.isShowing}
+                            close={this.closeModalHandler}>
+                            Maybe aircrafts fly very high because they don't want to be seen in plane sight?
+                        </Modal>
                         <div className="menu-right">
-                            <Identificate/>
+
+                            <Identificate evento={this.triggerOpenModalHandler}/>
                             <Carrito/>
+
                         </div>
 
                     </div>
@@ -104,7 +135,7 @@ class Header extends Component {
 
 function mapStateToProps(state) {
     return {
-        desc: state.Search.desc
+        desc: state.Search.desc,
     }
 }
 

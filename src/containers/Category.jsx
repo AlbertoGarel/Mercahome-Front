@@ -86,7 +86,7 @@ class Category extends Component {
     //     })
     // }
     renderPoolCategories() {
-        if (this.props.desc.length === 0) {
+        if (this.props.desc.length > 2) {
             if (this.state.render !== 'search') this.setState({render: 'search'});
 
             return this.props.busqueda.map((product) => {
@@ -131,8 +131,10 @@ class Category extends Component {
                                 <div className="titulo mx-auto mb-2 ">
                                     <h2>{(this.state.render === 'category') ? this.state.cat : 'Tus resultados de búsqueda'}</h2>
                                     {
-                                        (this.state.render === 'category') ? <SortBtn clickHandler={this.outputEvent} data={this.state.btn}/>
-                                        : <SortBtn clickHandler={this.outputEvent} data={this.state.btn} tipo={"d-none"}/>
+                                        (this.state.render === 'category') ?
+                                            <SortBtn clickHandler={this.outputEvent} data={this.state.btn}/>
+                                            : <SortBtn clickHandler={this.outputEvent} data={this.state.btn}
+                                                       tipo={"d-none"}/>
                                     }
 
                                     <hr/>

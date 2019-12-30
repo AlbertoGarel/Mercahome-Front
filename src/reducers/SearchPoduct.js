@@ -20,8 +20,8 @@ function Search(state = initialState, action) {
             return {
                 ...state,
                 list: [],
-                desc: action.payload,
-                vaciar: true
+                desc: '',
+                vaciar: action.payload
 
             };
         default:

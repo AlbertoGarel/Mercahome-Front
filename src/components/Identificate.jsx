@@ -14,8 +14,20 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './styles/Identificate.css';
 
 class Identificate extends Component {
+    constructor(props){
+        super(props);
+        this.state ={
+        }
+    }
+
+    openModalHandler = () => {
+        // this.setState({
+        //     isShowing: true
+        // });
+    };
 
     render() {
+        const {evento} = this.props
         return (
             <div className="dropdown open">
                 <label className="dropdown-toggle menu-item__label"
@@ -28,7 +40,7 @@ class Identificate extends Component {
                     <h1 className="dropdown-item">Invitado</h1>
                     <p className="lugar_entrega dropdown-item">Entregar en...</p>
                     <div className="dropdown-divider"/>
-                    <a id="identificate_btn" type="button" className="btn btn-lg btn-block" href="/">Identificate</a>
+                    <button id="identificate_btn" type="button" className="btn btn-lg btn-block" onClick={evento}>Identificate</button>
                     <div className="dropdown-divider"/>
                     <a className="dropdown-item info" href="/">
                         <i className="fa fa-lg fa-question info"/>
