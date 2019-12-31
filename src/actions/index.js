@@ -8,6 +8,7 @@ export const SHOW_POOLCAT = 'SHOW_POOLCAT';
 export const SORT_BYPRICE = 'SORT_BYPRICE';
 export const SEARCH = 'SEARCH';
 export const DELETE = 'DELETE';
+export const GET_USER = 'GET_USER';
 
 
 export function showCategories() {
@@ -35,21 +36,32 @@ export function showPoolCat(cat) {
         })
 }
 
-export function sortByPrice(btnBol){
-        store.dispatch({type: SORT_BYPRICE, payload: btnBol})
+export function sortByPrice(btnBol) {
+    store.dispatch({type: SORT_BYPRICE, payload: btnBol})
 };
 
-export async function search(desc){
+export async function search(desc) {
     const res = await axios.get(`http://localhost:3000/products/?name=${desc}`);
     store.dispatch({type: SEARCH, payload: {list: res.data, desc: desc}})
 };
 
-export async function searchDelete(desc){
-    store.dispatch({type: DELETE, payload: true})
+export async function searchDelete(desc) {
+    await store.dispatch({type: DELETE, payload: true})
 };
 
-// export async function userregister(params){
-//     axios.get()
-//         .then(res => store.dispatch({type:})
-// }
+export function userRegister(paramsBody) {
+    axios.post('http://localhost:3000/users/login', paramsBody)
+        .then(res => {
+            store.dispatch({
+                type: GET_USER, payload: {
+                    username: res.data.user_name,
+                    address: res.data.address,
+                    token: res.data.token,
+                    email: res.data.email
+                }
+            });
+            localStorage.setItem('user', JSON.stringify(res.data))
+        })
+        .catch(err => console.log(err));
+}
 

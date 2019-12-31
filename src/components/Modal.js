@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import {userRegister} from "../actions";
 
 import './styles/Modal.css';
 import $ from 'jquery';
@@ -15,7 +16,7 @@ class Modal extends Component {
             values: {
                 email: '',
                 username: '',
-                loginUsername: '',
+                loginEmail: '',
                 password: '',
                 loginPassword: '',
                 userStreet: '',
@@ -24,7 +25,7 @@ class Modal extends Component {
             validations: {
                 email: '',
                 username: '',
-                loginUsername: '',
+                loginEmail: '',
                 password: '',
                 loginPassword: '',
                 userStreet: '',
@@ -45,8 +46,13 @@ class Modal extends Component {
 
         const values = JSON.stringify(this.state);
         if (ev.target.id === "login-form") {
-            alert(ev.target.id + '=> ' + this.state.values.loginUsername + ' - ' + this.state.values.loginPassword);
-
+            // alert(ev.target.id + '=> ' + this.state.values.loginUsername + ' - ' + this.state.values.loginPassword);
+            const paramsBody = {
+                "email": this.state.values.loginEmail,
+                "password":this.state.values.loginPassword
+            };
+            this.myFormRef.reset();
+            userRegister(paramsBody);
         } else {
             // alert(ev.target.id + '=> ' + this.state.values.username + ' - ' + this.state.values.password + ' - ' + this.state.values.userStreet + ' - ' + this.state.values.email);
             axios.post('http://localhost:3000/users/register', {
@@ -68,9 +74,8 @@ class Modal extends Component {
                         RegExito: ''
                     })
                 });
-            // this.myFormRef.reset();
+            this.myFormRef.reset();
         }
-        this.myFormRef.reset();
     };
     handleChange = (ev) => {
         const {name, value} = ev.target;
@@ -82,9 +87,9 @@ class Modal extends Component {
         })
     };
     validateAll = (ev) => {
-        const {loginUsername, loginPassword, username, password, email, userStreet, confirmPassword} = this.state.values
+        const {loginEmail, loginPassword, username, password, email, userStreet, confirmPassword} = this.state.values
         const validations = {
-            loginUsername: '',
+            loginEmail: '',
             loginPassword: '',
             username: '',
             password: '',
@@ -111,12 +116,20 @@ class Modal extends Component {
                 validations.loginPassword = 'Al menos un dígitoa es requerido.';
                 isValid = false;
             }
-            if (!loginUsername) {
-                validations.loginUsername = 'Nombre es requerido';
+            // if (!loginUsername) {
+            //     validations.loginUsername = 'Nombre es requerido';
+            //     isValid = false
+            // }
+            // if ((loginUsername && loginUsername.length < 8) || (loginUsername.length > 20)) {
+            //     validations.loginUsername = 'Nombre debe contener de 3 a 20 caracteres.'
+            //     isValid = false
+            // }
+            if (!loginEmail) {
+                validations.loginEmail = 'Email es requerido'
                 isValid = false
             }
-            if ((loginUsername && loginUsername.length < 8) || (loginUsername.length > 20)) {
-                validations.loginUsername = 'Nombre debe contener de 3 a 20 caracteres.'
+            if (loginEmail && !/\S+@\S+\.\S+/.test(loginEmail)) {
+                validations.loginEmail = 'Formato de Email debe ser :  example@mail.com';
                 isValid = false
             }
             if (loginPassword < 8) {
@@ -259,15 +272,15 @@ class Modal extends Component {
                                                       method="post" role="form" style={{display: 'block'}}
                                                       ref={(login) => this.myFormRef = login}>
                                                     <div className="form-group">
-                                                        <input type="text"
+                                                        <input type="email"
 
-                                                               name="loginUsername"
+                                                               name="loginEmail"
                                                                onChange={this.handleChange}
                                                                onBlur={this.validateOne}
 
-                                                               id="loginUsername" tabIndex="1"
-                                                               className="form-control" placeholder="Usuario"/>
-                                                        <p className="error">{this.state.validations.loginUsername}</p>
+                                                               id="loginEmail" tabIndex="1"
+                                                               className="form-control" placeholder="Email"/>
+                                                        <p className="error">{this.state.validations.loginEmail}</p>
                                                     </div>
                                                     <div className="form-group">
                                                         <input type="password"

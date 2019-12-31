@@ -17,8 +17,22 @@ import Category from "./containers/Category";
 import SearchView from "./components/SearchView";
 import NotFoundPage from "./components/NotFoundPage";
 import Header from "./components/Header";
+import {GET_USER} from "./actions";
 
-console.log('%cSilence is Gold...', 'color:white;background-color:purple')
+console.log('%cSilence is Gold...', 'color:white;background-color:purple');
+
+if(localStorage.getItem('user')){
+    const user = JSON.parse(localStorage.getItem('user'));
+    store.dispatch({
+        type: GET_USER, payload: {
+            username: user.user_name,
+            address: user.address,
+            token: user.token,
+            email: user.email
+        }
+    });
+}
+
 // const store = createStore(reducers, composeEnhancers());
 ReactDOM.render(
     <Provider store={store}>
