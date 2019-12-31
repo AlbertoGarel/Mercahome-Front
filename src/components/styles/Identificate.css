@@ -101,3 +101,13 @@ h1 {
 .dropdown.open {
     margin-right: 2em;
 }
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: green;
+}
+.dropdown-menu.show i{
+    margin-right: .3em;
+    vertical-align: text-top;
+    color: #A2A09E;
+}

@@ -9,6 +9,7 @@ export const SORT_BYPRICE = 'SORT_BYPRICE';
 export const SEARCH = 'SEARCH';
 export const DELETE = 'DELETE';
 export const GET_USER = 'GET_USER';
+export const USER_DELETE = 'USER_DELETE';
 
 
 export function showCategories() {
@@ -63,5 +64,16 @@ export function userRegister(paramsBody) {
             localStorage.setItem('user', JSON.stringify(res.data))
         })
         .catch(err => console.log(err));
+}
+
+export function logOut(){
+    store.dispatch({type: USER_DELETE, payload: {
+            username: '',
+            address: '',
+            token: '',
+            email: ''
+        }
+    });
+    localStorage.removeItem('user');
 }
 

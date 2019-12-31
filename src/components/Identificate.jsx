@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 /**
  * IMPORT BOOTSTRAP
  * */
@@ -12,6 +12,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
  * */
 import './styles/Identificate.css';
 import {connect} from "react-redux";
+import {logOut} from "../actions";
 
 class Identificate extends Component {
     constructor(props) {
@@ -20,12 +21,14 @@ class Identificate extends Component {
         }
     }
 
-
+    handlerLogout = () => {
+        logOut();
+    };
 
 
     render() {
         const {evento, user} = this.props;
-        console.log(user);
+        console.log('user', user.username.length < 0);
         return (
             <div className="dropdown open">
                 <label className="dropdown-toggle menu-item__label"
@@ -40,16 +43,38 @@ class Identificate extends Component {
                         {user.address ? user.address : 'Entregar en...'}
                     </p>
                     <div className="dropdown-divider"/>
-                    <button id="identificate_btn" type="button" className="btn btn-lg btn-block"
-                            onClick={evento}>Identificate
-                    </button>
+                    { user.username.length > 0 ?
+                        <Fragment>
+                        <a className="dropdown-item info" href="/">
+                            <i className="fa fa-2x fa-pencil-square-o"/>
+                            <span>Mis pedidos</span></a>
+                        <a className="dropdown-item info" href="/">
+                            <i className="fa fa-2x fa-user"/>
+                        <span>Cuenta</span>
+                        </a>
+                        </Fragment>
+                        :
+                        <button id="identificate_btn" type="button" className="btn btn-lg btn-block"
+                                onClick={evento}>Identificate
+                        </button>
+                    }
                     <div className="dropdown-divider"/>
                     <a className="dropdown-item info" href="/">
                         <i className="fa fa-lg fa-question info"/>
                         <span>Preguntas frecuentes</span></a>
                     <a className="dropdown-item info" href="/">
                         <i className="fa fa-2x fa-commenting"/>
-                        <span>Ayuda</span></a>
+                        <span>Ayuda</span>
+                    </a>
+                    { user.username.length > 0 ?
+                        <button className="dropdown-item info"
+                                onClick={() => this.handlerLogout()}>
+                            <i className="fa fa-2x fa-sign-out" style={{transform: 'rotate(180deg)'}}/>
+                            <span>Logout</span>
+                        </button>
+                        :
+                        ''
+                    }
                 </div>
             </div>
         )
