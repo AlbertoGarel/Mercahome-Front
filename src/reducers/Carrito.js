@@ -11,8 +11,8 @@ function Carrito(state = initialState, action) {
         case ADD_PRODUCT :
             for(let prop of state.list){
                 if(action.payload.data.id === prop.id){
+                    prop.total = parseInt(prop.total) + parseInt(prop.price);
                     prop.cant = parseInt(prop.cant) + 1;
-
                   return {
                       list:[...state.list]
                   }
@@ -20,6 +20,7 @@ function Carrito(state = initialState, action) {
             }
             if(action.payload.data.cant <= 0){
                 action.payload.data.cant = 1;
+                action.payload.data.total = action.payload.data.price;
             }
             return {
                 list: [...state.list, action.payload.data]
@@ -28,7 +29,8 @@ function Carrito(state = initialState, action) {
             for(let prop of state.list){
                 if(action.payload.data.id === prop.id){
                     prop.cant = parseInt(prop.cant) - 1;
-                    console.log('propCant___RESTA', prop.cant)
+                    prop.total = parseInt(prop.total) - parseInt(prop.price);
+                    console.log('propCant___RESTA', prop.cant);
                     if(prop.cant <=0){
                         let el = state.list.indexOf(prop);
                         state.list.splice(el, 1);

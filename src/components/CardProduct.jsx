@@ -44,7 +44,6 @@ class CardProduct extends Component {
         // localStorage.setItem(`product-${id}`, JSON.stringify(product));
         // console.log(ev.currentTarget.dataset)
         // console.log('restar',this.state.minCat)
-        console.log('canttttttt', cant)
 
 
         subtractProduct(ev.currentTarget.dataset)
@@ -83,7 +82,9 @@ class CardProduct extends Component {
                     <div className="card-body">
                         <p className="card-text">{this.props.data.name}</p>
                         <p className="card-text">{this.props.data.ud}</p>
-                        <p className="card-text font-weight-bold">{`${this.props.data.price.toFixed(2)} € `} <span
+                        <p className="card-text font-weight-bold">
+                            {`${parseFloat(this.props.data.price).toFixed(2)} € `}
+                        <span
                             className="card-text">{this.props.data.volume}</span>
                         </p>
                     </div>
@@ -93,8 +94,11 @@ class CardProduct extends Component {
                                   data-id={this.props.data.id}
                                   data-name={this.props.data.name}
                                   data-image={this.props.data.image}
-                                  data-price={this.props.data.price.toFixed(2)}
+                                  data-price={parseFloat(this.props.data.price).toFixed(2)}
+                                  data-ud={this.props.data.ud}
+                                  data-volume={this.props.data.volume}
                                   data-cant={1}
+                                  data-total={parseFloat(this.props.data.price).toFixed(2)}
                                   onClick={(ev) => this.handleButtonPlus(ev)}>
                                 <i className="fa fa-circle fa-stack-2x"/><i
                                 className="fa fa-plus-circle fa-stack-1x fa-inverse"/>
@@ -103,7 +107,7 @@ class CardProduct extends Component {
                                   data-id={this.props.data.id}
                                   data-name={this.props.data.name}
                                   data-image={this.props.data.image}
-                                  data-price={this.props.data.price.toFixed(2)}
+                                  data-price={parseFloat(this.props.data.price).toFixed(2)}
                                 // data-cant={1}
                                   onClick={(ev) => this.handleButtonQuit(ev, this.cant)}>
                                 <i className="fa fa-circle fa-stack-2x"/><i
