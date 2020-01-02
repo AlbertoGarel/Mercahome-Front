@@ -10,6 +10,8 @@ export const SEARCH = 'SEARCH';
 export const DELETE = 'DELETE';
 export const GET_USER = 'GET_USER';
 export const USER_DELETE = 'USER_DELETE';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const SUBTRACT_PRODUCT = 'SUBTRACT_PRODUCT';
 
 
 export function showCategories() {
@@ -75,5 +77,18 @@ export function logOut(){
         }
     });
     localStorage.removeItem('user');
+}
+//carrito
+export function addProduct(data){
+    store.dispatch({type: ADD_PRODUCT, payload:{
+            data
+        }
+    })
+}
+export function subtractProduct(data){
+    store.dispatch({type: SUBTRACT_PRODUCT, payload:{
+            data
+        }
+    })
 }
 

@@ -34,7 +34,7 @@ class Identificate extends Component {
                 <label className="dropdown-toggle menu-item__label"
                        id="dropdownMenu5" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                    {user.username ? user.username : 'Identificate'}
+                    {user.username ? `Hola, ${user.username}` : 'Identificate'}
                 </label>
                 <i className="fa fa-2x fa-chevron-down"/>
                 <div className="dropdown-menu">
