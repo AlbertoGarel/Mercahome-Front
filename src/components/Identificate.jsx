@@ -22,7 +22,9 @@ class Identificate extends Component {
     }
 
     handlerLogout = () => {
-        logOut();
+        let paramsBody = {email : JSON.parse(localStorage.getItem('user')).email};
+        let paramsHeaders = {headers:{Authorization : `bearer ${JSON.parse(localStorage.getItem('user')).token}`}};
+        logOut(paramsBody, paramsHeaders);
     };
 
 

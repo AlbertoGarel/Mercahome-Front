@@ -105,7 +105,7 @@ class Header extends Component {
                             <Link className="menu-item subhead1-b" data-test="my-products-link"
                                   to="/my-products"
                             >
-                                <label className="menu-item__label">Mis Habituales</label>
+                                <label className="menu-item__label">Admin</label>
                                 <span className="menu-item__border"/>
                             </Link>
                         </div>

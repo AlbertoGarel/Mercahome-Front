@@ -29,13 +29,13 @@ class Carrito extends Component {
         (this.state.showClass === 'noShow') ? this.setState({showClass: ''}) : this.setState({showClass: 'noShow'});
     };
 
-    calculaTotal(){
+    calculaTotal() {
 
     }
 
     renderItemsToCart() {
         if (this.props.items.length > 0) {
-            return this.props.items.map(item=>{
+            return this.props.items.map(item => {
                 return (
                     <Fragment key={item.id}>
                         <CardProduct data={item}/>
@@ -44,7 +44,13 @@ class Carrito extends Component {
             })
         } else {
             return (
-                <div style={{width:100+'%', height: 100 + '%', display:'flex',justifyContent:'center',alignItems:'center'}}>
+                <div style={{
+                    width: 100 + '%',
+                    height: 100 + '%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
                     <img src="./assets/images/no_products.png" alt=""/>
                 </div>
             )
@@ -53,7 +59,7 @@ class Carrito extends Component {
 
     render() {
         let valorTotal = 0;
-        for(let props of this.props.items){
+        for (let props of this.props.items) {
             valorTotal += parseFloat(props.total);
         }
 
@@ -77,9 +83,13 @@ class Carrito extends Component {
                                 Precio Total:
 
                             </span>
-                            <span> { valorTotal } €</span>
+                            <span> {valorTotal} €</span>
                         </div>
-                        <button type="button" className="btn ">tramitar pedido</button>
+                        <button type="button" className="btn"
+                            onClick={()=>{this.sendCarrito()}}
+                        >
+                            Tramitar pedido
+                        </button>
                     </div>
                     <hr/>
                 </section>
