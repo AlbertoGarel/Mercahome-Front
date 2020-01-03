@@ -89,7 +89,7 @@ class CardProduct extends Component {
                         </p>
                     </div>
                     {user.username.length > 0 ?
-                        <div className="buttons">
+                        <div className="buttons d-flex align-items-center">
                             <span className="fa-stack fa-lg"
                                   data-id={this.props.data.id}
                                   data-name={this.props.data.name}
@@ -103,19 +103,37 @@ class CardProduct extends Component {
                                 <i className="fa fa-circle fa-stack-2x"/><i
                                 className="fa fa-plus-circle fa-stack-1x fa-inverse"/>
                             </span>
-                            <span className="fa-stack fa-lg"
-                                  data-id={this.props.data.id}
-                                  data-name={this.props.data.name}
-                                  data-image={this.props.data.image}
-                                  data-price={parseFloat(this.props.data.price).toFixed(2)}
-                                // data-cant={1}
-                                  onClick={(ev) => this.handleButtonQuit(ev, this.cant)}>
+
+                            { cant === undefined ?
+                                ''
+                                :
+                                cant == 1 ?
+                                <span className="fa-stack fa-lg"
+                                      data-id={this.props.data.id}
+                                      data-name={this.props.data.name}
+                                      data-image={this.props.data.image}
+                                      data-price={parseFloat(this.props.data.price).toFixed(2)}
+                                    // data-cant={1}
+                                      onClick={(ev) => this.handleButtonQuit(ev, this.cant)}>
                                 <i className="fa fa-circle fa-stack-2x"/><i
-                                className="fa fa-trash fa-stack-1x fa-inverse"/>
+                                    className="fa fa-trash fa-stack-1x fa-inverse"/>
                         </span>
-                            {/*{this.state.number !== 0 ? this.state.number : ''}*/}
-                            {cant}
-                            {/*{console.log('cant', cant)}*/}
+                                :
+
+                                <span className="fa-stack fa-lg"
+                                      data-id={this.props.data.id}
+                                      data-name={this.props.data.name}
+                                      data-image={this.props.data.image}
+                                      data-price={parseFloat(this.props.data.price).toFixed(2)}
+                                    // data-cant={1}
+                                      onClick={(ev) => this.handleButtonQuit(ev, this.cant)}>
+                                 <i className="fa fa-circle fa-stack-2x"></i><i
+                                     className="fa fa-minus-circle fa-stack-1x fa-inverse"></i>
+                        </span>
+                            }
+                            <span className="text-bolde flex-grow-1 text-center">
+                                {cant === undefined ? '' :  cant > 0 && cant == 1 ? `${cant} ud` : `${cant} uds` }
+                            </span>
                         </div>
                         :
                         ''

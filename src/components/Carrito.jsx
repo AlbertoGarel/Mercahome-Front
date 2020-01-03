@@ -74,10 +74,10 @@ class Carrito extends Component {
                     <div id="footer_carrito">
                         <div id="footer_carrito_pedido">
                             <span>
-                                {/*Total aproximado*/}
-                                { valorTotal }
+                                Precio Total:
+
                             </span>
-                            <span>...€</span>
+                            <span> { valorTotal } €</span>
                         </div>
                         <button type="button" className="btn ">tramitar pedido</button>
                     </div>
