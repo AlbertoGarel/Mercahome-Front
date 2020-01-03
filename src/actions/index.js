@@ -1,6 +1,7 @@
 import axios from 'axios';
 import store from "../store";
 
+
 export const SHOW_CATEGORIES = 'SHOW_CATEGORIES';
 export const SHOW_TOPPRODUCTS = 'SHOW_TOPPRODUCTS';
 export const SHOW_SLIDERPRODUCTS = 'SHOW_SLIDERPRODUCTS';
@@ -12,6 +13,7 @@ export const GET_USER = 'GET_USER';
 export const USER_DELETE = 'USER_DELETE';
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const SUBTRACT_PRODUCT = 'SUBTRACT_PRODUCT';
+export const DELETE_ORDER = 'DELETE_ORDER';
 
 
 export function showCategories() {
@@ -55,43 +57,71 @@ export async function searchDelete(desc) {
 export function userRegister(paramsBody) {
     axios.post('http://localhost:3000/users/login', paramsBody)
         .then(res => {
-            store.dispatch({
-                type: GET_USER, payload: {
-                    username: res.data.user_name,
-                    address: res.data.address,
-                    token: res.data.token,
-                    email: res.data.email
-                }
-            });
-            localStorage.setItem('user', JSON.stringify(res.data))
+            if(res.status === 200){
+                store.dispatch({
+                    type: GET_USER, payload: {
+                        username: res.data.user_name,
+                        address: res.data.address,
+                        token: res.data.token,
+                        email: res.data.email
+                    }
+                });
+                localStorage.setItem('user', JSON.stringify(res.data))
+            }
+
         })
         .catch(err => console.log(err));
 }
 
-export function logOut(paramsBody, paramsHeaders){
+export function logOut(paramsBody, paramsHeaders) {
     axios.patch('http://localhost:3000/users/logout', paramsBody, paramsHeaders)
-        .then(res=>console.log(res.message))
-        .then(err=>console.log(err))
-    store.dispatch({type: USER_DELETE, payload: {
-            username: '',
-            address: '',
-            token: '',
-            email: ''
-        }
-    });
-    localStorage.removeItem('user');
+        .then(res => {
+            alert(res.message);
+            if(res.status === 200){
+                store.dispatch({
+                    type: USER_DELETE, payload: {
+                        username: '',
+                        address: '',
+                        token: '',
+                        email: ''
+                    }
+                });
+                localStorage.removeItem('user');
+            }
+
+        })
+        .then(err => console.log(err))
+
 }
+
 //carrito
-export function addProduct(data){
-    store.dispatch({type: ADD_PRODUCT, payload:{
+export function addProduct(data) {
+    store.dispatch({
+        type: ADD_PRODUCT, payload: {
             data
         }
     })
 }
-export function subtractProduct(data){
-    store.dispatch({type: SUBTRACT_PRODUCT, payload:{
+
+export function subtractProduct(data) {
+    store.dispatch({
+        type: SUBTRACT_PRODUCT, payload: {
             data
         }
     })
 }
+
+export function AddOrder(paramsBody, paramsHeaders) {
+     axios.post('http://localhost:3000/orders/add', paramsBody, paramsHeaders)
+        .then(res=>{
+            console.log(res.data.message);
+            store.dispatch({type: DELETE_ORDER, payload:[]});
+            return res.data.message
+        })
+        .catch(err=>console.log(err))
+
+
+}
+
+
 
