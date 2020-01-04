@@ -192,9 +192,9 @@ class Modal extends Component {
     };
 
     validateOne = (ev) => {
-        const {name} = ev.target
-        const value = this.state.values[name]
-        let message = ''
+        const {name} = ev.target;
+        const value = this.state.values[name];
+        let message = '';
 
         if (!value) {
             message = `${name} es requerido`

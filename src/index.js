@@ -15,6 +15,7 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import App from './containers/App';
 import Category from "./containers/Category";
 import SearchView from "./components/SearchView";
+import AdminView from "./containers/AdminView";
 import NotFoundPage from "./components/NotFoundPage";
 import Header from "./components/Header";
 import {GET_USER} from "./actions";
@@ -25,10 +26,12 @@ if(localStorage.getItem('user')){
     const user = JSON.parse(localStorage.getItem('user'));
     store.dispatch({
         type: GET_USER, payload: {
+            id: user.id,
             username: user.user_name,
             address: user.address,
             token: user.token,
-            email: user.email
+            email: user.email,
+            role: user.role
         }
     });
 }
@@ -42,6 +45,7 @@ ReactDOM.render(
                 <Route path="/" exact component={App}/>
                 <Route path="/categorias" component={Category}/>
                 <Route path="/search-results" component={SearchView}/>
+                <Route path="/admin" component={AdminView}/>
                 <Route path="/404" component={NotFoundPage} />
                 <Redirect to="/404" />
             </Switch>

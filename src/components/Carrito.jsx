@@ -32,7 +32,7 @@ class Carrito extends Component {
 
     sendCarrito = () => {
         // let carritoLocalStorage = JSON.parse(localStorage.getItem('redux_localstorage_simple')).Carrito.list;
-        if (localStorage.getItem('user') && JSON.parse(localStorage.getItem('redux_localstorage_simple')).Carrito.list.length > 0) {
+        if (localStorage.getItem('user') && JSON.parse(localStorage.getItem('redux_localstorage_simple_Carrito')).list.length > 0) {
 
             let carritoOfredux = this.props.items;
             let user = JSON.parse(localStorage.getItem('user'));

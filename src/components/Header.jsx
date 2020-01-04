@@ -29,7 +29,7 @@ class Header extends Component {
         super(props);
         this.state = {
             search:'',
-            isShowing: false
+            isShowing: false,
         };
         this.textInput = React.createRef()
     }
@@ -47,7 +47,7 @@ class Header extends Component {
 
 
     componentDidMount() {
-        this.textInput.current.value = this.props.desc
+        this.textInput.current.value = this.props.desc;
     }
 
     handleSearch = (ev) => {
@@ -59,6 +59,7 @@ class Header extends Component {
     handleBlur = (ev) => {
         ev.target.value = '';
     };
+
 
 
     render() {
@@ -102,12 +103,18 @@ class Header extends Component {
                                 <label className="menu-item__label">Categorías</label>
                                 <span className="menu-item__border"/>
                             </Link>
-                            <Link className="menu-item subhead1-b" data-test="my-products-link"
-                                  to="/my-products"
-                            >
-                                <label className="menu-item__label">Admin</label>
-                                <span className="menu-item__border"/>
-                            </Link>
+                            {
+                                this.props.user.role === 'admin' ?
+
+                                <Link className="menu-item subhead1-b" data-test="my-products-link"
+                                      to="/admin"
+                                >
+                                    <label className="menu-item__label">Admin</label>
+                                    <span className="menu-item__border"/>
+                                </Link>
+                                    :
+                                    ''
+                            }
                         </div>
                         {/*{ this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }*/}
 
@@ -136,6 +143,7 @@ class Header extends Component {
 function mapStateToProps(state) {
     return {
         desc: state.Search.desc,
+        user: state.Users
     }
 }
 

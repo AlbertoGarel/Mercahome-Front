@@ -60,10 +60,12 @@ export function userRegister(paramsBody) {
             if(res.status === 200){
                 store.dispatch({
                     type: GET_USER, payload: {
+                        id: res.data.id,
                         username: res.data.user_name,
                         address: res.data.address,
                         token: res.data.token,
-                        email: res.data.email
+                        email: res.data.email,
+                        role: res.data.role
                     }
                 });
                 localStorage.setItem('user', JSON.stringify(res.data))
@@ -80,10 +82,12 @@ export function logOut(paramsBody, paramsHeaders) {
             if(res.status === 200){
                 store.dispatch({
                     type: USER_DELETE, payload: {
+                        id: '',
                         username: '',
                         address: '',
                         token: '',
-                        email: ''
+                        email: '',
+                        role: ''
                     }
                 });
                 localStorage.removeItem('user');
