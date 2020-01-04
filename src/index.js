@@ -19,6 +19,7 @@ import AdminView from "./containers/AdminView";
 import NotFoundPage from "./components/NotFoundPage";
 import Header from "./components/Header";
 import {GET_USER} from "./actions";
+import UserOrders from "./containers/UserOrders";
 
 console.log('%cSilence is Gold...', 'color:white;background-color:purple');
 
@@ -46,6 +47,7 @@ ReactDOM.render(
                 <Route path="/categorias" component={Category}/>
                 <Route path="/search-results" component={SearchView}/>
                 <Route path="/admin" component={AdminView}/>
+                <Route path="/mispedidos" component={UserOrders}/>
                 <Route path="/404" component={NotFoundPage} />
                 <Redirect to="/404" />
             </Switch>

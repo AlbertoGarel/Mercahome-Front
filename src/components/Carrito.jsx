@@ -69,8 +69,8 @@ renderItemsToCart()
     if (this.props.items.length > 0) {
         return this.props.items.map(item => {
             return (
-                <Fragment >
-                    <CardProduct key={item.id} data={item}/>
+                <Fragment key={item.id} >
+                    <CardProduct data={item}/>
                 </Fragment>
             )
         })

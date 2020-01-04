@@ -78,7 +78,6 @@ export function userRegister(paramsBody) {
 export function logOut(paramsBody, paramsHeaders) {
     axios.patch('http://localhost:3000/users/logout', paramsBody, paramsHeaders)
         .then(res => {
-            alert(res.message);
             if(res.status === 200){
                 store.dispatch({
                     type: USER_DELETE, payload: {

@@ -30,7 +30,6 @@ class Identificate extends Component {
 
     render() {
         const {evento, user} = this.props;
-        console.log('user', user.username.length < 0);
         return (
             <div className="dropdown open">
                 <label className="dropdown-toggle menu-item__label"
@@ -47,13 +46,13 @@ class Identificate extends Component {
                     <div className="dropdown-divider"/>
                     { user.username.length > 0 ?
                         <Fragment>
-                        <a className="dropdown-item info" href="/">
+                        <a className="dropdown-item info" href="/mispedidos">
                             <i className="fa fa-2x fa-pencil-square-o"/>
                             <span>Mis pedidos</span></a>
-                        <a className="dropdown-item info" href="/">
-                            <i className="fa fa-2x fa-user"/>
-                        <span>Cuenta</span>
-                        </a>
+                        {/*<a className="dropdown-item info" href="/">*/}
+                        {/*    <i className="fa fa-2x fa-user"/>*/}
+                        {/*<span>Cuenta</span>*/}
+                        {/*</a>*/}
                         </Fragment>
                         :
                         <button id="identificate_btn" type="button" className="btn btn-lg btn-block"

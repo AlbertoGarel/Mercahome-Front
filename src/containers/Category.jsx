@@ -20,7 +20,6 @@ import Wrapper from "../components/Wrapper";
  * IMPORT REDUCERS
  * */
 import {
-    search,
     showCategories,
     showPoolCat,
     sortByPrice,
