@@ -9,6 +9,12 @@ import store from './store'
  * */
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 /**
+ *  IMPORT LIBRARIES OF BOOTSTRAP
+ * */
+import $ from 'jquery';
+import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+/**
  * IMPORT CONTAINERS
  * */
 import App from './containers/App';
@@ -23,7 +29,8 @@ import UserOrders from "./containers/UserOrders";
 console.log('%cSilence is Gold...', 'color:white;background-color:purple');
 // console.log = console.warn = console.error = () => {};
 
-if(localStorage.getItem('user')){
+
+if (localStorage.getItem('user')) {
     const user = JSON.parse(localStorage.getItem('user'));
     store.dispatch({
         type: GET_USER, payload: {
@@ -48,8 +55,8 @@ ReactDOM.render(
                 <Route path="/search-results" component={SearchView}/>
                 <Route path="/admin" component={AdminView}/>
                 <Route path="/mispedidos" component={UserOrders}/>
-                <Route path="/404" component={NotFoundPage} />
-                <Redirect to="/404" />
+                <Route path="/404" component={NotFoundPage}/>
+                <Redirect to="/404"/>
             </Switch>
         </BrowserRouter>
     </Provider>

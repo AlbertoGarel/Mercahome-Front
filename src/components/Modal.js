@@ -400,7 +400,7 @@ class Modal extends Component {
                                                         <select name="usercity" className="form-control"
                                                                 defaultValue={this.state.values.usercity}
                                                                 onChange={this.handleChanges}>
-                                                            <option value="" selected>Selecciona Ciudad</option>
+                                                            <option >Selecciona Ciudad</option>
                                                             {this.state.rows}
                                                         </select>
                                                         <p className="error">{this.state.validations.usercity}</p>

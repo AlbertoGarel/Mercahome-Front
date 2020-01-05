@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 import {connect} from "react-redux";
-import {addProduct, subtractProduct} from '../actions'
+import {addProduct, showCategories, showPoolCat, subtractProduct} from '../actions'
 
 import './styles/CardProduct.css'
 
@@ -11,6 +11,7 @@ class CardProduct extends Component {
         super(props);
         this.state = {}
     }
+
 
     handleButtonPlus = (ev) => {
         addProduct(ev.currentTarget.dataset);
