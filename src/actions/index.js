@@ -92,6 +92,7 @@ export function logOut(paramsBody, paramsHeaders) {
                 localStorage.removeItem('user');
                 localStorage.removeItem('redux_localstorage_simple_Carrito');
                         store.dispatch({type: DELETE_ORDER, payload:[]});
+                window.location.href = "/";
                         return res.data.message
             }
 

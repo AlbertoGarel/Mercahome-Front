@@ -348,17 +348,6 @@ class Modal extends Component {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="form-group">
-                                                        <div className="row formulario-row">
-                                                            <div className="col-lg-12">
-                                                                <div className="text-center">
-                                                                    <a href="http://phpoll.com/recover" tabIndex="5"
-                                                                       className="forgot-password">¿Has olvidado tu
-                                                                        contraseña?</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </form>
                                                 {/*REGISTER*/}
                                                 <form id="register-form" onSubmit={(ev) => this.handleSubmit(ev)}
