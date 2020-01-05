@@ -69,6 +69,7 @@ export function userRegister(paramsBody) {
                     }
                 });
                 localStorage.setItem('user', JSON.stringify(res.data))
+                window.location.href = "/";
             }
 
         })

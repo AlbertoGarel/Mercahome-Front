@@ -33,7 +33,7 @@ class Modal extends Component {
                 confirmPassword: '',
             },
             rows: [],
-            citySelected: '1'
+            // citySelected: 1
         }
         // this.handleChanges = this.handleChanges.bind(this)
         this.myFormRef = React.createRef();
@@ -50,31 +50,36 @@ class Modal extends Component {
 
         const values = JSON.stringify(this.state);
         if (ev.target.id === "login-form") {
-            // alert(ev.target.id + '=> ' + this.state.values.loginUsername + ' - ' + this.state.values.loginPassword);
             const paramsBody = {
                 "email": this.state.values.loginEmail,
                 "password": this.state.values.loginPassword
             };
             this.myFormRef.reset();
             userRegister(paramsBody);
-            window.location.href = "/";
-        } else {
 
-            axios.post('http://localhost:3000/users/register', {
+        } else {
+                        console.log(this.state.values.username)
+                        console.log(this.state.values.userStreet)
+                        console.log(this.state.values.usercity)
+                        console.log(this.state.values.email)
+                        console.log(this.state.values.password)
+            let paramsBody = {
                 "user_name": this.state.values.username,
                 "email": this.state.values.email,
                 "password": this.state.values.password,
                 "address": this.state.values.userStreet,
                 "fk_city": this.state.values.usercity
-            })
+            }
+            axios.post('http://localhost:3000/users/register', paramsBody)
                 .then(res => {
                     this.setState({
                         RegExito: res.data.message,
                         RegError: '',
                     });
+                    if(res.status == 200) window.location.href = "/";
+                    // this.handleSubmit("login-form")
                 })
                 .catch(err => {
-                    console.log(err)
                     this.setState({
                         RegError: err.message,
                         RegExito: ''
@@ -93,7 +98,7 @@ class Modal extends Component {
         })
     };
     validateAll = (ev) => {
-        const {loginEmail, loginPassword, username, password, email, userStreet, confirmPassword} = this.state.values
+        const {loginEmail, loginPassword, username, password, email, userStreet, confirmPassword, usercity} = this.state.values
         const validations = {
             loginEmail: '',
             loginPassword: '',
@@ -146,6 +151,10 @@ class Modal extends Component {
 
             return isValid;
         } else {
+            if(!usercity){
+                validations.usercity= 'Selecciona una ciudad';
+                isValid = false;
+            }
             if (password < 8) {
                 validations.password = 'Longitud mínima de 8 caracteres es requerida.';
                 isValid = false;
@@ -170,11 +179,12 @@ class Modal extends Component {
                 validations.password = 'Passwords no son idénticos';
                 isValid = false;
             }
+
             if (!username) {
                 validations.username = 'Nombre es requerido.';
                 isValid = false
             }
-            if ((username && username.length < 8) || (username.length > 20)) {
+            if ((!username) || (username && username.length < 8) || (username.length > 20)) {
                 validations.username = 'Nombre debe contener de 8 a 20 caracteres.'
                 isValid = false
             }
@@ -187,7 +197,7 @@ class Modal extends Component {
                 isValid = false
             }
             if (!userStreet) {
-                validations.userStreet = 'Calle es requerida'
+                validations.userStreet = 'Calle es requerida';
                 isValid = false
             }
             if (!isValid) {
@@ -248,8 +258,7 @@ class Modal extends Component {
     }
 
     handleChanges(ev){
-        alert(ev.target.value)
-        this.setState({citySelected: ev.target.value});
+        // this.setState({citySelected: ev.target.value});
         this.setState({ values:{usercity: ev.target.value}})
     }
 
@@ -361,7 +370,9 @@ class Modal extends Component {
                                                                onChange={this.handleChange}
                                                                onBlur={this.validateOne}
 
-                                                               id="username" tabIndex="1"
+                                                               autoComplete="nope"
+                                                               id="username"
+                                                               tabIndex="1"
                                                                className="form-control" placeholder="Usuario"/>
                                                         <p className="error">{this.state.validations.username}</p>
                                                     </div>
@@ -372,6 +383,7 @@ class Modal extends Component {
                                                                onChange={this.handleChange}
                                                                onBlur={this.validateOne}
 
+                                                               autoComplete="nope"
                                                                id="userStreet"
                                                                tabIndex="2"
                                                                className="form-control" placeholder="Calle"/>
@@ -379,9 +391,13 @@ class Modal extends Component {
                                                     </div>
                                                     {/*--option*/}
                                                     <div className="form-group">
-                                                        <select name="usercity" className="form-control" value={this.state.citySelected}  onChange={this.handleChanges.bind(this)}>
+                                                        <select name="usercity" className="form-control"
+                                                                // defaultValue={this.state.citySelected}
+                                                                onChange={this.handleChanges.bind(this)}>
+                                                            <option value="" selected>Selecciona Ciudad</option>
                                                             {this.state.rows}
                                                         </select>
+                                                        <p className="error">{this.state.validations.usercity}</p>
                                                     </div>
                                                     {/*option*/}
                                                     <div className="form-group">
@@ -391,6 +407,7 @@ class Modal extends Component {
                                                                onChange={this.handleChange}
                                                                onBlur={this.validateOne}
 
+                                                               autoComplete="nope"
                                                                id="email" tabIndex="3"
                                                                className="form-control"
                                                                placeholder="Correo electronico"/>
@@ -403,6 +420,7 @@ class Modal extends Component {
                                                                onChange={this.handleChange}
                                                                onBlur={this.validateOne}
 
+                                                               autoComplete="nope"
                                                                id="password"
                                                                tabIndex="4" className="form-control"
                                                                placeholder="Contraseña"/>
@@ -414,6 +432,7 @@ class Modal extends Component {
                                                                name="confirmPassword"
                                                                onChange={this.handleChange}
                                                                onBlur={this.validateOne}
+                                                               autoComplete="nope"
 
                                                                id="confirmPassword" tabIndex="5"
                                                                className="form-control"
