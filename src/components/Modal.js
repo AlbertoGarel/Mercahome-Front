@@ -36,6 +36,7 @@ class Modal extends Component {
             citySelected: '1'
         }
         // this.handleChanges = this.handleChanges.bind(this)
+        this.myFormRef = React.createRef();
     }
 
     //envío de formulario
@@ -57,8 +58,7 @@ class Modal extends Component {
             this.myFormRef.reset();
             userRegister(paramsBody);
         } else {
-            // alert(ev.target.id + '=> ' + this.state.values.username + ' - ' + this.state.values.password + ' - ' + this.state.values.userStreet + ' - ' + this.state.values.email);
-            console.log('frbrvbfbvvbubvubvu', this.state.values.usercity);
+
             axios.post('http://localhost:3000/users/register', {
                 "user_name": this.state.values.username,
                 "email": this.state.values.email,
@@ -104,7 +104,7 @@ class Modal extends Component {
             confirmPassword: ''
         };
         let isValid = true;
-        // alert(ev.target.id)
+
         if (ev.target.id === "login-form") {
             if (!loginPassword) {
                 validations.loginPassword = 'Password es requerido.';
@@ -220,7 +220,6 @@ class Modal extends Component {
                 [name]: message
             }
         })
-            console.log('--------', this.state.values)
     };
 
     // render Selects

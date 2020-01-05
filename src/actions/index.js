@@ -90,6 +90,9 @@ export function logOut(paramsBody, paramsHeaders) {
                     }
                 });
                 localStorage.removeItem('user');
+                localStorage.removeItem('redux_localstorage_simple_Carrito');
+                        store.dispatch({type: DELETE_ORDER, payload:[]});
+                        return res.data.message
             }
 
         })
@@ -117,7 +120,6 @@ export function subtractProduct(data) {
 export function AddOrder(paramsBody, paramsHeaders) {
      axios.post('http://localhost:3000/orders/add', paramsBody, paramsHeaders)
         .then(res=>{
-            console.log(res.data.message);
             store.dispatch({type: DELETE_ORDER, payload:[]});
             return res.data.message
         })

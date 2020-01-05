@@ -137,6 +137,19 @@ a {
     margin-top: 8px;
 }
 
+.btn-group.btn-group-toggle.float-right{
+    width: 4em;
+    color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fa-chevron-up:before {
+    content: "\f077";
+    font-size: 15px !important;
+    color: #A2A09E;
+}
+
 #enlace-logo {
     flex-basis: calc(100% - 87%);
     /*min-width: calc(100% - 75%);*/

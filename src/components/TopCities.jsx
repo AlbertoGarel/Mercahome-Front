@@ -2,8 +2,6 @@ import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 // import './styles/TopCities.css'
 
-import $ from 'jquery';
-import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
@@ -46,8 +44,6 @@ class TopCities extends Component {
 
         return (
             <Fragment>
-                {/*<div className="container mt-100">*/}
-                {/*<div className="row">*/}
                 <div className="col-md-12">
 
                     <div className="">
@@ -76,8 +72,6 @@ class TopCities extends Component {
                         </div>
                     </div>
                 </div>
-                {/*</div>*/}
-                {/*</div>*/}
             </Fragment>
         )
     }

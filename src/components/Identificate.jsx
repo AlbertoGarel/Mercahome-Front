@@ -60,13 +60,13 @@ class Identificate extends Component {
                         </button>
                     }
                     <div className="dropdown-divider"/>
-                    <a className="dropdown-item info" href="/">
+                    <p className="dropdown-item info pt-3 pb-3">
                         <i className="fa fa-lg fa-question info"/>
-                        <span>Preguntas frecuentes</span></a>
-                    <a className="dropdown-item info" href="/">
+                        <span>Preguntas frecuentes</span></p>
+                    <p className="dropdown-item info  pt-3 pb-3">
                         <i className="fa fa-2x fa-commenting"/>
                         <span>Ayuda</span>
-                    </a>
+                    </p>
                     { user.username.length > 0 ?
                         <button className="dropdown-item info"
                                 onClick={() => this.handlerLogout()}>

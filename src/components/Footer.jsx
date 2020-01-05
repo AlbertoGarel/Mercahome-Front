@@ -17,11 +17,11 @@ class Footer extends Component {
         return (
             <div id="footer">
                 <ul id="ul_footer">
-                    <li><a href="/">Política de cookies</a></li>
-                    <li><a href="/">Términos y condiciones</a></li>
-                    <li><a href="/">Política de privacidad</a></li>
+                    <li style={{color:'#A2A09E'}}>Política de cookies</li>
+                    <li style={{color:'#A2A09E'}}>Términos y condiciones</li>
+                    <li style={{color:'#A2A09E'}}>Política de privacidad</li>
                 </ul>
-                <div>
+                <div className="mr-5">
                     <h6>© Mercahome S.A.</h6>
                 </div>
             </div>

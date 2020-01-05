@@ -1,10 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import Rows from '../components/Rows'
-import $ from 'jquery';
-import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import {connect} from "react-redux";
-import {showCategories, showPoolCat} from "../actions";
+import {showCategories} from "../actions";
 
 
 class UpdateProducts extends Component {

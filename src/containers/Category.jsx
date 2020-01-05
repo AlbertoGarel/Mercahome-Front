@@ -75,15 +75,6 @@ class Category extends Component {
         })
     }
 
-    // renderPoolCategories() {
-    //     return this.props.poolCat.map((product) => {
-    //         return (
-    //             <Fragment key={product.id}>
-    //                 <CardProduct data={product}/>
-    //             </Fragment>
-    //         )
-    //     })
-    // }
     renderPoolCategories() {
         if (this.props.desc.length > 2) {
             if (this.state.render !== 'search') this.setState({render: 'search'});
@@ -110,7 +101,6 @@ class Category extends Component {
         this.setState({cat: category});
         showPoolCat(category);
         searchDelete();
-        // search('')//vaciamos colección de búsueda en REDUX para renderizar poolcat en 'renderPoolCategories'.Habría que crear action para ahorrar uso de llamada a servidor.
 
     };
 
@@ -118,7 +108,7 @@ class Category extends Component {
         return (
             <Fragment>
                 <Wrapper>
-                    <main className="container-fluid no-padd compens_nav">
+                    <main className="container-fluid no-padd compens_nav" id="categorias">
                         <section className="cont-principal">
                             <ul id="categorias">
 
@@ -144,6 +134,7 @@ class Category extends Component {
                             </div>
                         </section>
                     </main>
+                    <hr/>
                 </Wrapper>
             </Fragment>
         )

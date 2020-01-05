@@ -116,14 +116,6 @@ class Rows extends Component {
                 </td>
                 <td className="tabledit-view-mode"
                     style={{cursor: 'pointer'}}>
-                    {/*<input*/}
-                    {/*    className="tabledit-input form-control input-sm fill"*/}
-                    {/*    type="text"*/}
-                    {/*    name="categoria"*/}
-                    {/*    value="Otto"*/}
-                    {/*    // style={{display: 'none'}}*/}
-                    {/*    disabled=""*/}
-                    {/*/>*/}
                     <select name="categoria"
                             className="tabledit-input form-control input-sm fill"
                             ref={this.category}

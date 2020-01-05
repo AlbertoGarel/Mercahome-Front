@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import connect from 'react-redux'
 import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './store'
@@ -22,6 +21,7 @@ import {GET_USER} from "./actions";
 import UserOrders from "./containers/UserOrders";
 
 console.log('%cSilence is Gold...', 'color:white;background-color:purple');
+// console.log = console.warn = console.error = () => {};
 
 if(localStorage.getItem('user')){
     const user = JSON.parse(localStorage.getItem('user'));
