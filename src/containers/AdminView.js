@@ -21,15 +21,6 @@ import TopProducts from '../components/TopProducts'
 /**
  * IMPORT REDUCERS
  * */
-import {
-    search,
-    showCategories,
-    showPoolCat,
-    sortByPrice,
-    searchDelete
-} from "../actions";
-import CardProduct from "../components/CardProduct";
-import SortBtn from "../components/SortBtn";
 import UpdateProducts from "../components/UpdateProducts";
 import TopCities from "../components/TopCities";
 
@@ -101,19 +92,31 @@ class AdminView extends Component {
                             <div className="contenido-admin">
                                 <div className="titulo mx-auto mb-2 ">
                                     <h2>Panel de administración</h2>
+
                                     <hr/>
+                                    <div className="row pt-5 pb-5">
+                                        <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center">
+                                            <img src="./assets/images/merca_dev.png" alt="logo mercahome" id="nav_logo"
+                                                 className="mb-2 mb-sm-0" style={{maxWidth:25+'em'}}/>
+                                        </div>
+
+                                        <div className="col-sm-12 col-md-6 d-flex flex-column flex-wrap">
+                                            <div className="align-self-md-end align-self-sm-center align-self-center">
+                                                <h3 className="text-black-50">
+                                                    <i className="fa fa-1x fa-area-chart"/><span className="mr-2"/>
+                                                    {localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).user_name : ''}
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                {/*{this.state.render === 'topVentas' ?*/}
-                                {/*    <div className="container">*/}
-                                {/*        <h1>esto es top ventas</h1>*/}
-                                {/*    </div>*/}
-                                {/*    :*/}
-                                {/*    <UpdateProducts/>*/}
-                                {/*}*/}
+
                                 {this.handlerRender()}
+
                             </div>
                         </section>
                     </main>
+                    <hr/>
                 </Wrapper>
             </Fragment>
         )

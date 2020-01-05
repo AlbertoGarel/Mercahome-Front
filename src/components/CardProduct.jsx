@@ -13,52 +13,15 @@ class CardProduct extends Component {
     }
 
     handleButtonPlus = (ev) => {
-        // this.setState({number: this.state.number + 1});
-        // let id = ev.currentTarget.dataset.id;
-        // let cant = ev.currentTarget.dataset.cant;
-        // let price = ev.currentTarget.dataset.price;
-        // const product ={
-        //     cant
-        // };
-        // localStorage.setItem(`product-${id}`, JSON.stringify(product));
-        // console.log(cant * price)
-        // console.log('sumar',this.state.minCat)
-
         addProduct(ev.currentTarget.dataset);
 
 
     };
     handleButtonQuit = (ev, cant) => {
-        // this.setState({number: this.state.number - 1});
-        // if (this.state.number <= 0) {
-        //     this.setState({
-        //         number: 0
-        //     })
-        // }
-        // let id = ev.currentTarget.dataset.id;
-        // let cant = ev.currentTarget.dataset.cant;
-        // let price = ev.currentTarget.dataset.price;
-        // const product ={
-        //     cant
-        // };
-        // localStorage.setItem(`product-${id}`, JSON.stringify(product));
-        // console.log(ev.currentTarget.dataset)
-        // console.log('restar',this.state.minCat)
-
 
         subtractProduct(ev.currentTarget.dataset)
 
     };
-
-
-//     renderCant(itemId){
-//     const items = this.props.items;
-//     for(let prop of items){
-//         if(prop.id === itemId){
-//             return prop.cant;
-//         }
-//     }
-// }
 
 
     render() {
@@ -127,8 +90,8 @@ class CardProduct extends Component {
                                       data-price={parseFloat(this.props.data.price).toFixed(2)}
                                     // data-cant={1}
                                       onClick={(ev) => this.handleButtonQuit(ev, this.cant)}>
-                                 <i className="fa fa-circle fa-stack-2x"></i><i
-                                     className="fa fa-minus-circle fa-stack-1x fa-inverse"></i>
+                                 <i className="fa fa-circle fa-stack-2x"/><i
+                                     className="fa fa-minus-circle fa-stack-1x fa-inverse"/>
                         </span>
                             }
                             <span className="text-bolde flex-grow-1 text-center">

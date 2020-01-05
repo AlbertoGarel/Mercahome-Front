@@ -3,7 +3,7 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
     width: 100%;
-    border-top: 1px solid #e6e6e6;
+    /*border-top: 1px solid #e6e6e6;*/
     min-height: 70px;
     padding: 1.5em 0;
     max-width: calc(100% - 3em);
@@ -44,4 +44,8 @@
 h6 {
     margin: 0px;
     color: #A2A09E;
+}
+#footer{
+    margin-left: 200px;
+    width: calc(100% - 200px);
 }

@@ -19,7 +19,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
  *  IMPORT STYLES
  * */
 import './styles/App.css';
-import SortBtn from "../components/SortBtn";
 
 class App extends Component {
     constructor(props) {
@@ -49,6 +48,7 @@ class App extends Component {
                             <Showproducts/>
                         </section>
                     </main>
+                    <hr/>
                 </Wrapper>
             </Fragment>
         );

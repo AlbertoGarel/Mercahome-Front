@@ -20,6 +20,7 @@ class Modal extends Component {
                 password: '',
                 loginPassword: '',
                 userStreet: '',
+                usercity: '',
                 confirmPassword: '',
             },
             validations: {
@@ -30,9 +31,12 @@ class Modal extends Component {
                 loginPassword: '',
                 userStreet: '',
                 confirmPassword: '',
-            }
+            },
+            rows: [],
+            citySelected: '1'
         }
-
+        // this.handleChanges = this.handleChanges.bind(this)
+        this.myFormRef = React.createRef();
     }
 
     //envío de formulario
@@ -49,18 +53,19 @@ class Modal extends Component {
             // alert(ev.target.id + '=> ' + this.state.values.loginUsername + ' - ' + this.state.values.loginPassword);
             const paramsBody = {
                 "email": this.state.values.loginEmail,
-                "password":this.state.values.loginPassword
+                "password": this.state.values.loginPassword
             };
             this.myFormRef.reset();
             userRegister(paramsBody);
         } else {
-            // alert(ev.target.id + '=> ' + this.state.values.username + ' - ' + this.state.values.password + ' - ' + this.state.values.userStreet + ' - ' + this.state.values.email);
+
             axios.post('http://localhost:3000/users/register', {
-                    "user_name": this.state.values.username,
-                    "email": this.state.values.email,
-                    "password": this.state.values.password,
-                    "address": this.state.values.userStreet
-                })
+                "user_name": this.state.values.username,
+                "email": this.state.values.email,
+                "password": this.state.values.password,
+                "address": this.state.values.userStreet,
+                "fk_city": this.state.values.usercity
+            })
                 .then(res => {
                     this.setState({
                         RegExito: res.data.message,
@@ -95,10 +100,11 @@ class Modal extends Component {
             password: '',
             email: '',
             userStreet: '',
+            usercity: '',
             confirmPassword: ''
         };
         let isValid = true;
-        // alert(ev.target.id)
+
         if (ev.target.id === "login-form") {
             if (!loginPassword) {
                 validations.loginPassword = 'Password es requerido.';
@@ -215,6 +221,36 @@ class Modal extends Component {
             }
         })
     };
+
+    // render Selects
+    componentDidMount() {
+        axios.get('http://localhost:3000/cities')
+            .then(res=>{
+                this.renderTopCities(res)
+            })
+            .catch(err=>console.log(err));
+    }
+
+    renderTopCities(res){
+        let elems=[];
+        res.data.map((cat) => {
+
+            elems.push(
+
+                <Fragment key={cat.id}>
+                    <option value={cat.id}>{cat.name}</option>
+                </Fragment>
+
+            )
+        });
+        this.setState({rows: elems})
+    }
+
+    handleChanges(ev){
+        alert(ev.target.value)
+        this.setState({citySelected: ev.target.value});
+        this.setState({ values:{usercity: ev.target.value}})
+    }
 
     render() {
         $(function () {
@@ -351,6 +387,13 @@ class Modal extends Component {
                                                                className="form-control" placeholder="Calle"/>
                                                         <p className="error">{this.state.validations.userStreet}</p>
                                                     </div>
+                                                    {/*--option*/}
+                                                    <div className="form-group">
+                                                        <select name="usercity" className="form-control" value={this.state.citySelected}  onChange={this.handleChanges.bind(this)}>
+                                                            {this.state.rows}
+                                                        </select>
+                                                    </div>
+                                                    {/*option*/}
                                                     <div className="form-group">
                                                         <input type="email"
 

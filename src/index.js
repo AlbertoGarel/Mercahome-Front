@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import connect from 'react-redux'
 import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './store'
@@ -19,8 +18,10 @@ import AdminView from "./containers/AdminView";
 import NotFoundPage from "./components/NotFoundPage";
 import Header from "./components/Header";
 import {GET_USER} from "./actions";
+import UserOrders from "./containers/UserOrders";
 
 console.log('%cSilence is Gold...', 'color:white;background-color:purple');
+// console.log = console.warn = console.error = () => {};
 
 if(localStorage.getItem('user')){
     const user = JSON.parse(localStorage.getItem('user'));
@@ -46,6 +47,7 @@ ReactDOM.render(
                 <Route path="/categorias" component={Category}/>
                 <Route path="/search-results" component={SearchView}/>
                 <Route path="/admin" component={AdminView}/>
+                <Route path="/mispedidos" component={UserOrders}/>
                 <Route path="/404" component={NotFoundPage} />
                 <Redirect to="/404" />
             </Switch>

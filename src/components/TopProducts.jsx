@@ -2,8 +2,6 @@ import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 import './styles/TopProducts.css'
 
-import $ from 'jquery';
-import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
@@ -18,7 +16,6 @@ class TopProducts extends Component {
 componentDidMount() {
         axios.get('http://localhost:3000/products/top')
             .then(res=>{
-                // console.log(res)
                 this.renderTopProducts(res)
             })
             .catch(err=>console.log(err));
