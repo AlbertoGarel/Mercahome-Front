@@ -57,6 +57,7 @@ class Modal extends Component {
             };
             this.myFormRef.reset();
             userRegister(paramsBody);
+            window.location.href = "/";
         } else {
 
             axios.post('http://localhost:3000/users/register', {
