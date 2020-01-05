@@ -11,6 +11,7 @@ class Modal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            usercity: '',
             RegExito: '',
             RegError: '',
             values: {
@@ -20,7 +21,7 @@ class Modal extends Component {
                 password: '',
                 loginPassword: '',
                 userStreet: '',
-                usercity: '',
+                // usercity: '',
                 confirmPassword: '',
             },
             validations: {
@@ -38,6 +39,9 @@ class Modal extends Component {
         // this.handleChanges = this.handleChanges.bind(this)
         this.myFormRef = React.createRef();
     }
+
+    //validación de SELECT OPTION
+
 
     //envío de formulario
     handleSubmit = (ev) => {
@@ -68,8 +72,8 @@ class Modal extends Component {
                 "email": this.state.values.email,
                 "password": this.state.values.password,
                 "address": this.state.values.userStreet,
-                "fk_city": this.state.values.usercity
-            }
+                "fk_city": this.state.usercity
+            };
             axios.post('http://localhost:3000/users/register', paramsBody)
                 .then(res => {
                     this.setState({
@@ -98,7 +102,8 @@ class Modal extends Component {
         })
     };
     validateAll = (ev) => {
-        const {loginEmail, loginPassword, username, password, email, userStreet, confirmPassword, usercity} = this.state.values
+        const {usercity} = this.state
+        const {loginEmail, loginPassword, username, password, email, userStreet, confirmPassword} = this.state.values
         const validations = {
             loginEmail: '',
             loginPassword: '',
@@ -257,10 +262,11 @@ class Modal extends Component {
         this.setState({rows: elems})
     }
 
-    handleChanges(ev){
+    handleChanges = (ev) =>{
         // this.setState({citySelected: ev.target.value});
-        this.setState({ values:{usercity: ev.target.value}})
-    }
+        // this.setState({ values:{usercity: ev.target.value}})
+        this.setState( { usercity: ev.target.value})
+    };
 
     render() {
         $(function () {
@@ -392,8 +398,8 @@ class Modal extends Component {
                                                     {/*--option*/}
                                                     <div className="form-group">
                                                         <select name="usercity" className="form-control"
-                                                                // defaultValue={this.state.citySelected}
-                                                                onChange={this.handleChanges.bind(this)}>
+                                                                defaultValue={this.state.values.usercity}
+                                                                onChange={this.handleChanges}>
                                                             <option value="" selected>Selecciona Ciudad</option>
                                                             {this.state.rows}
                                                         </select>
