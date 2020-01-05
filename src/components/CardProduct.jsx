@@ -24,6 +24,21 @@ class CardProduct extends Component {
 
     };
 
+    //DETECCIÓN Y SUSTITUCIÓN DE IMÁGENES ROTAS POR URL FALLIDA
+    componentDidMount() {
+        setTimeout(function () {
+            let arrImg = document.getElementsByTagName('img');
+            for (let element of arrImg) {
+                // element.src = './assets/images/merca_dev.png';
+                if (!element.complete || typeof element.naturalWidth == "undefined" || element.naturalWidth == 0) {
+                    console.log(element.naturalWidth)
+                    // image was broken, replace with your new image
+                    // element.src = './public/assets/images/merca_dev.png';
+                    element.src = './assets/images/generica_300x300.jpg';
+                }
+            }
+        }, 1000);
+    }
 
     render() {
         const {user, items} = this.props;
@@ -48,8 +63,8 @@ class CardProduct extends Component {
                         <p className="card-text">{this.props.data.ud}</p>
                         <p className="card-text font-weight-bold">
                             {`${parseFloat(this.props.data.price).toFixed(2)} € `}
-                        <span
-                            className="card-text">{this.props.data.volume}</span>
+                            <span
+                                className="card-text">{this.props.data.volume}</span>
                         </p>
                     </div>
                     {user.username.length > 0 ?
@@ -68,35 +83,35 @@ class CardProduct extends Component {
                                 className="fa fa-plus-circle fa-stack-1x fa-inverse"/>
                             </span>
 
-                            { cant === undefined ?
+                            {cant === undefined ?
                                 ''
                                 :
                                 cant == 1 ?
-                                <span className="fa-stack fa-lg"
-                                      data-id={this.props.data.id}
-                                      data-name={this.props.data.name}
-                                      data-image={this.props.data.image}
-                                      data-price={parseFloat(this.props.data.price).toFixed(2)}
-                                    // data-cant={1}
-                                      onClick={(ev) => this.handleButtonQuit(ev, this.cant)}>
+                                    <span className="fa-stack fa-lg"
+                                          data-id={this.props.data.id}
+                                          data-name={this.props.data.name}
+                                          data-image={this.props.data.image}
+                                          data-price={parseFloat(this.props.data.price).toFixed(2)}
+                                        // data-cant={1}
+                                          onClick={(ev) => this.handleButtonQuit(ev, this.cant)}>
                                 <i className="fa fa-circle fa-stack-2x"/><i
-                                    className="fa fa-trash fa-stack-1x fa-inverse"/>
+                                        className="fa fa-trash fa-stack-1x fa-inverse"/>
                         </span>
-                                :
+                                    :
 
-                                <span className="fa-stack fa-lg"
-                                      data-id={this.props.data.id}
-                                      data-name={this.props.data.name}
-                                      data-image={this.props.data.image}
-                                      data-price={parseFloat(this.props.data.price).toFixed(2)}
-                                    // data-cant={1}
-                                      onClick={(ev) => this.handleButtonQuit(ev, this.cant)}>
+                                    <span className="fa-stack fa-lg"
+                                          data-id={this.props.data.id}
+                                          data-name={this.props.data.name}
+                                          data-image={this.props.data.image}
+                                          data-price={parseFloat(this.props.data.price).toFixed(2)}
+                                        // data-cant={1}
+                                          onClick={(ev) => this.handleButtonQuit(ev, this.cant)}>
                                  <i className="fa fa-circle fa-stack-2x"/><i
-                                     className="fa fa-minus-circle fa-stack-1x fa-inverse"/>
+                                        className="fa fa-minus-circle fa-stack-1x fa-inverse"/>
                         </span>
                             }
                             <span className="text-bolde flex-grow-1 text-center">
-                                {cant === undefined ? '' :  cant > 0 && cant == 1 ? `${cant} ud` : `${cant} uds` }
+                                {cant === undefined ? '' : cant > 0 && cant == 1 ? `${cant} ud` : `${cant} uds`}
                             </span>
                         </div>
                         :

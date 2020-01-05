@@ -82,7 +82,7 @@ class Carrito extends Component {
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                    <img src="./assets/images/no_products.png" alt=""/>
+                    <img src="./assets/images/empty-cart.png" alt="imagen no hay compra"/>
                 </div>
             )
         }
