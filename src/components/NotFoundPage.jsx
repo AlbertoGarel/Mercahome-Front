@@ -28,13 +28,28 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <Wrapper>
-                    <main className="my_container compens_nav">
-                        <section className="d-flex justify-content-center align-items-center" style={{width:"100vw",height:"100vh"}}>
-                           <h1 style={{transform:"scale(3)"}}>404</h1>
-                        </section>
-                    </main>
-                </Wrapper>
+                {/*<Wrapper>*/}
+                <div>
+                    <div className="" style={{
+                        background: 'url(./assets/images/404_page_cover.jpg)',
+                        width: 100 + 'vw',
+                        height: 100 + 'vh',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 100 + '%' + 100 + '%'
+                    }}>
+
+                        <div style={{
+                            position: 'absolute',
+                            top: 14 + 'em',
+                            left: 8 + 'em'
+                        }}>
+                            <h1 className="text-center ">volver a la tienda</h1>
+                            <a href="/"><img src="./assets/images/merca_dev.png" alt="logo"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {/*</Wrapper>*/}
             </Fragment>
         );
     }
