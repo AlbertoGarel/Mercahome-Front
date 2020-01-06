@@ -1,9 +1,10 @@
 import React, {Component, Fragment} from 'react';
-import {userRegister} from "../actions";
+import {GET_USER, userRegister} from "../actions";
 
 import './styles/Modal.css';
 import $ from 'jquery';
 import axios from 'axios';
+import store from "../store";
 
 // import Popper from 'popper.js';
 class Modal extends Component {
@@ -11,6 +12,8 @@ class Modal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            logExito:'',
+            logError: '',
             usercity: '',
             RegExito: '',
             RegError: '',
@@ -52,15 +55,41 @@ class Modal extends Component {
             return false
         }
 
-        const values = JSON.stringify(this.state);
+        // const values = JSON.stringify(this.state);
         if (ev.target.id === "login-form") {
             const paramsBody = {
                 "email": this.state.values.loginEmail,
                 "password": this.state.values.loginPassword
             };
-            this.myFormRef.reset();
-            userRegister(paramsBody);
+            // this.myFormRef.reset();
+            // userRegister(paramsBody);
+            axios.post('http://localhost:3000/users/login', paramsBody)
+                .then(res => {
+                    if (res.status == 200) {
+                        store.dispatch({
+                            type: GET_USER, payload: {
+                                id: res.data.id,
+                                username: res.data.user_name,
+                                address: res.data.address,
+                                token: res.data.token,
+                                email: res.data.email,
+                                role: res.data.role
+                            }
+                        });
+                        localStorage.setItem('user', JSON.stringify(res.data))
+                        window.location.href = "/";
+                        // this.setState({logExito: res})
+                    }else{
+                        this.setState({logError: 'error en login'})
+                    }
 
+                })
+                .catch(err => {
+                    this.setState({logError: 'Error en login'})
+                    setTimeout(function () {
+                        this.setState({logError: ''})
+                    }.bind(this), 2000)
+                });
         } else {
             let paramsBody = {
                 "user_name": this.state.values.username,
@@ -75,7 +104,7 @@ class Modal extends Component {
                         RegExito: res.data.message,
                         RegError: '',
                     });
-                    if(res.status == 200) window.location.href = "/";
+                    if (res.status == 200) window.location.href = "/";
                     // this.handleSubmit("login-form")
                 })
                 .catch(err => {
@@ -148,11 +177,13 @@ class Modal extends Component {
                 validations.password = 'Longitud mínima de 8 caracteres es requerida.';
                 isValid = false;
             }
-
+            if (!isValid) {
+                this.setState({validations})
+            }
             return isValid;
         } else {
-            if(!usercity){
-                validations.usercity= 'Selecciona una ciudad';
+            if (!usercity) {
+                validations.usercity = 'Selecciona una ciudad';
                 isValid = false;
             }
             if (password < 8) {
@@ -168,7 +199,7 @@ class Modal extends Component {
                 isValid = false;
             }
             if (!(/[1-9]/).test(password)) {
-                validations.password = 'Al menos un dígitoa es requerido.';
+                validations.password = 'Al menos un valor numérico es requerido.';
                 isValid = false;
             }
             if (!password) {
@@ -236,31 +267,29 @@ class Modal extends Component {
     // render Selects
     componentDidMount() {
         axios.get('http://localhost:3000/cities')
-            .then(res=>{
+            .then(res => {
                 this.renderTopCities(res)
             })
-            .catch(err=>console.log(err));
+            .catch(err => console.log(err));
     }
 
-    renderTopCities(res){
-        let elems=[];
+    renderTopCities(res) {
+        let elems = [];
         res.data.map((cat) => {
 
             elems.push(
-
                 <Fragment key={cat.id}>
                     <option value={cat.id}>{cat.name}</option>
                 </Fragment>
-
             )
         });
         this.setState({rows: elems})
     }
 
-    handleChanges = (ev) =>{
+    handleChanges = (ev) => {
         // this.setState({citySelected: ev.target.value});
         // this.setState({ values:{usercity: ev.target.value}})
-        this.setState( { usercity: ev.target.value})
+        this.setState({usercity: ev.target.value})
     };
 
     render() {
@@ -313,6 +342,8 @@ class Modal extends Component {
                                     <div className="panel-body">
                                         <div className="row formulario-row">
                                             <div className="col-lg-12">
+                                                <p className="error">{this.state.logError}</p>
+                                                <p className="correcto">{this.state.logExito}</p>
                                                 <p className="error">{this.state.RegError}</p>
                                                 <p className="correcto">{this.state.RegExito}</p>
                                                 <form id="login-form" onSubmit={(ev) => this.handleSubmit(ev)}
@@ -395,7 +426,7 @@ class Modal extends Component {
                                                         <select name="usercity" className="form-control"
                                                                 defaultValue={this.state.values.usercity}
                                                                 onChange={this.handleChanges}>
-                                                            <option >Selecciona Ciudad</option>
+                                                            <option>Selecciona Ciudad</option>
                                                             {this.state.rows}
                                                         </select>
                                                         <p className="error">{this.state.validations.usercity}</p>

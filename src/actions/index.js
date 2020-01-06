@@ -54,27 +54,27 @@ export async function searchDelete(desc) {
     await store.dispatch({type: DELETE, payload: true})
 };
 
-export function userRegister(paramsBody) {
-    axios.post('http://localhost:3000/users/login', paramsBody)
-        .then(res => {
-            if(res.status === 200){
-                store.dispatch({
-                    type: GET_USER, payload: {
-                        id: res.data.id,
-                        username: res.data.user_name,
-                        address: res.data.address,
-                        token: res.data.token,
-                        email: res.data.email,
-                        role: res.data.role
-                    }
-                });
-                localStorage.setItem('user', JSON.stringify(res.data))
-                window.location.href = "/";
-            }
-
-        })
-        .catch(err => console.log(err));
-}
+// export function userRegister(paramsBody) {
+//     axios.post('http://localhost:3000/users/login', paramsBody)
+//         .then(res => {
+//             if(res.status === 200){
+//                 store.dispatch({
+//                     type: GET_USER, payload: {
+//                         id: res.data.id,
+//                         username: res.data.user_name,
+//                         address: res.data.address,
+//                         token: res.data.token,
+//                         email: res.data.email,
+//                         role: res.data.role
+//                     }
+//                 });
+//                 localStorage.setItem('user', JSON.stringify(res.data))
+//                 window.location.href = "/";
+//             }
+//
+//         })
+//         .catch(err => console.log(err));
+// }
 
 export function logOut(paramsBody, paramsHeaders) {
     axios.patch('http://localhost:3000/users/logout', paramsBody, paramsHeaders)

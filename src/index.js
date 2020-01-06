@@ -11,8 +11,8 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 /**
  *  IMPORT LIBRARIES OF BOOTSTRAP
  * */
-import $ from 'jquery';
-import Popper from 'popper.js';
+// import $ from 'jquery';
+// import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 /**
  * IMPORT CONTAINERS

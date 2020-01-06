@@ -143,7 +143,7 @@ class Header extends Component {
 function mapStateToProps(state) {
     return {
         desc: state.Search.desc,
-        user: state.Users
+        user: state.Users,
     }
 }
 

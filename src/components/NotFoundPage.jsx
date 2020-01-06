@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 /**
  *  IMPORT COMPONENTS
  * */
-import Wrapper from '../components/Wrapper';
+// import Wrapper from '../components/Wrapper';
 /**
  * IMPORT BOOTSTRAP
  * */

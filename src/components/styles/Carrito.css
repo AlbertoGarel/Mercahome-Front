@@ -1,6 +1,5 @@
 .fa-shopping-cart:before {
     content: "\f07a";
-    color: #A2A09E;
     font-size: 1.5em;
 }
 
@@ -141,4 +140,10 @@
 #body_carrito .card .position-relative {
     float: left;
     width: 25%!important;
+}
+#pintaverde{
+    color: #CCF6E6!important;
+}
+.pintagris{
+    color: #A2A09E;
 }

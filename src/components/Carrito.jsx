@@ -33,7 +33,6 @@ class Carrito extends Component {
 
     sendCarrito = () => {
         // let carritoLocalStorage = JSON.parse(localStorage.getItem('redux_localstorage_simple')).Carrito.list;
-        console.log(JSON.parse(localStorage.getItem('redux_localstorage_simple_Carrito')).list);
         if (localStorage.getItem('user') && JSON.parse(localStorage.getItem('redux_localstorage_simple_Carrito')).list.length > 0) {
 
             let carritoOfredux = this.props.items;
@@ -94,13 +93,25 @@ class Carrito extends Component {
         for (let props of this.props.items) {
             valorTotal += parseFloat(props.total);
         }
-
+        let totalProducts = 0;
+        for(let props of this.props.items){
+            totalProducts += parseFloat(props.cant);
+        }
 
 
         return (
             <Fragment>
-                <button id="btn_carrito" onClick={this.openCart}>
-                    <i className="fa fa-2x fa-shopping-cart"/>
+                <button id="btn_carrito" style={{position:'relative'}} onClick={this.openCart}>
+                    <i className="fa fa-2x fa-shopping-cart pintagris" id={totalProducts > 0 ?'pintaverde' : ''}/>
+                    <span style={
+                        {position:'absolute',
+                            top:50+'%',
+                            left:58+'%',
+                            transform: 'translate('+ '-' +50 + '%' + ','+ '-'+50+'%)',
+                            fontSize: 1.3+'em',
+                            color:'white',
+
+                        }}> {totalProducts === 0 ? '' : totalProducts}</span>
                 </button>
                 <section id="carrito_container" className={this.state.showClass}>
                     <div id="header_carrito">
@@ -140,7 +151,8 @@ class Carrito extends Component {
 
 function mapStateToProps(state) {
     return {
-        items: state.Carrito.list
+        items: state.Carrito.list,
+
     }
 }
 
