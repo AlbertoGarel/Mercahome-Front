@@ -62,11 +62,6 @@ class Modal extends Component {
             userRegister(paramsBody);
 
         } else {
-                        console.log(this.state.values.username)
-                        console.log(this.state.values.userStreet)
-                        console.log(this.state.values.usercity)
-                        console.log(this.state.values.email)
-                        console.log(this.state.values.password)
             let paramsBody = {
                 "user_name": this.state.values.username,
                 "email": this.state.values.email,
