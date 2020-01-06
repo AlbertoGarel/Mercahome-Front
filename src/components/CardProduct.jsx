@@ -31,7 +31,6 @@ class CardProduct extends Component {
             for (let element of arrImg) {
                 // element.src = './assets/images/merca_dev.png';
                 if (!element.complete || typeof element.naturalWidth == "undefined" || element.naturalWidth == 0) {
-                    console.log(element.naturalWidth)
                     // image was broken, replace with your new image
                     // element.src = './public/assets/images/merca_dev.png';
                     element.src = './assets/images/generica_300x300.jpg';
